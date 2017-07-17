@@ -2,7 +2,7 @@
 {
     public enum AcademicTitle
     {
-        #region AcademicTitle in Bulgarian
+        #region Academic titles in Bulgarian
         //Академичните длъжности са:
         //1. "асистент";
         //2. "главен асистент";

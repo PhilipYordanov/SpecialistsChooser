@@ -5,7 +5,7 @@
         #region Eqd in BUlgarian
         // Бакалавър
         // Магистър
-        // Докторантура
+        // Докторант
         #endregion
         Bachelor,
         Master,

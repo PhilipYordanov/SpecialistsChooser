@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations.Schema;
 
 namespace SpecialtySelector.Data
 {
@@ -20,9 +21,8 @@ namespace SpecialtySelector.Data
             get { return this.specialties; }
             set { this.specialties = value; }
         }
-
-        public int DepartmentId { get; set; }
-
+        [ForeignKey("DepartmentId")]
         public virtual Department Department { get; set; }
+        public int? DepartmentId { get; set; }
     }
 }

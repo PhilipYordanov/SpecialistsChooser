@@ -10,15 +10,15 @@ namespace SpecialtySelector.Data
         {
         }
 
-        public virtual DbSet<Department> Departments { get; set; }
+        public virtual IDbSet<Department> Departments { get; set; }
 
-        public virtual DbSet<SubDepartment> SubDepartments { get; set; }
-
-        public virtual DbSet<Specialty> Specialties { get; set; }
-
-        public virtual DbSet<Subject> Subjects { get; set; }
-
-        public virtual DbSet<Teacher> Teachers { get; set; }
+        public virtual IDbSet<SubDepartment> SubDepartments { get; set; }
+                       
+        public virtual IDbSet<Specialty> Specialties { get; set; }
+                      
+        public virtual IDbSet<Subject> Subjects { get; set; }
+                       
+        public virtual IDbSet<Teacher> Teachers { get; set; }
 
         public static SpecialtySelectorDbContext Create()
         {

@@ -203,12 +203,18 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201707170842346_InitialCreate.cs" />
+    <Compile Include="Migrations\201707170842346_InitialCreate.Designer.cs">
+      <DependentUpon>201707170842346_InitialCreate.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountModels\AccountViewModels.cs" />
     <Compile Include="Data\User.cs" />
     <Compile Include="Models\AccountModels\ExternalLoginConfirmationViewModel.cs" />
     <Compile Include="Models\AccountModels\ForgotPasswordViewModel.cs" />
     <Compile Include="Models\AccountModels\ForgotViewModel.cs" />
     <Compile Include="Models\AccountModels\LoginViewModel.cs" />
+    <Compile Include="Models\Departments\HomeIndexDepartmentsModel.cs" />
     <Compile Include="Models\ManageModels\AddPhoneNumberViewModel.cs" />
     <Compile Include="Models\ManageModels\ChangePasswordViewModel.cs" />
     <Compile Include="Models\ManageModels\ConfigureTwoFactorViewModel.cs" />
@@ -298,6 +304,11 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Scripts\jquery-1.10.2.min.map" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Migrations\201707170842346_InitialCreate.resx">
+      <DependentUpon>201707170842346_InitialCreate.cs</DependentUpon>
+    </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
