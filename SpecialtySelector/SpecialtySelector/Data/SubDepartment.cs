@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 
 namespace SpecialtySelector.Data
@@ -14,13 +15,20 @@ namespace SpecialtySelector.Data
 
         public int Id { get; set; }
 
+        [Required]
+        [MaxLength(1000)]
+        [MinLength(3)]
         public string Name { get; set; }
+
+        [StringLength(600)]
+        public string Description { get; set; }
 
         public virtual ICollection<Specialty> Specialties
         {
             get { return this.specialties; }
             set { this.specialties = value; }
         }
+
         [ForeignKey("DepartmentId")]
         public virtual Department Department { get; set; }
         public int? DepartmentId { get; set; }

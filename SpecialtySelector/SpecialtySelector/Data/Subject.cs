@@ -1,14 +1,23 @@
 ﻿using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 
 namespace SpecialtySelector.Data
 {
     public class Subject
     {
         private ICollection<Teacher> teachers;
+        private ICollection<Specialty> specialties;
 
         public Subject()
         {
             this.teachers = new HashSet<Teacher>();
+            this.specialties = new HashSet<Specialty>();
+        }
+
+        public virtual ICollection<Specialty> Specialties
+        {
+            get { return this.specialties; }
+            set { this.specialties = value; }
         }
 
         public virtual ICollection<Teacher> Teachers
@@ -18,19 +27,20 @@ namespace SpecialtySelector.Data
         }
 
         public int Id { get; set; }
+
+        [Required]
+        [MaxLength(1000)]
+        [MinLength(1)]
         public string Name { get; set; }
+        
         public bool IsMandatory { get; set; }
+        
         public int Credits { get; set; }
+
+        [Required]
         public int Course { get; set; }
 
-        public int SpecialtyId { get; set; }
-        public virtual Specialty Specialty { get; set; }
-
-        // Introducing FOREIGN KEY constraint 'FK_dbo.Subjects_dbo.Teachers_TeacherId' 
-        // on table 'Subjects' may cause cycles or multiple cascade paths
-        // Specify ON DELETE NO ACTION or ON UPDATE NO ACTION, or modify other FOREIGN KEY constraints
-
-        // public int TeacherId { get; set; }
-        // public virtual Teacher Teacher { get; set; }
+        [StringLength(600)]
+        public string Description { get; set; }
     }
 }

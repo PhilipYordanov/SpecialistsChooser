@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 
 namespace SpecialtySelector.Data
 {
@@ -12,8 +13,15 @@ namespace SpecialtySelector.Data
         }
 
         public int Id { get; set; }
-        public string Name { get; set; }
 
+        [Required]
+        [MaxLength(1000)]
+        [MinLength(3)]
+        public string Name { get; set; }
+        
+        [StringLength(600)]
+        public string Description { get; set; }
+       
         public virtual ICollection<SubDepartment> SubDepartments
         {
             get { return this.subDepartments; }

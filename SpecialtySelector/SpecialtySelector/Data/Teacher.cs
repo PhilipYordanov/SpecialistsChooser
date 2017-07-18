@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 using SpecialtySelector.Data.SpecialtySelectorEnums;
 
 namespace SpecialtySelector.Data
@@ -17,15 +18,19 @@ namespace SpecialtySelector.Data
             get { return this.subjects; }
             set { this.subjects = value; }
         }
-
+        
         public int Id { get; set; }
         public Degree Degree { get; set; }
         public AcademicTitle AcademicTitle { get; set; }
+
+        [Required]
         public string FirstName { get; set; }
+
         public string SecondName { get; set; }
+
+        [Required]
         public string LastName { get; set; }
 
-        public int SubjectId { get; set; }
-        public virtual Subject Subject { get; set; }
+        public string TeacherInfo { get; set; }
     }
 }
