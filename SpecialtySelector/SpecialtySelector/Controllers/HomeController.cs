@@ -7,17 +7,20 @@ namespace SpecialtySelector.Controllers
 {
     public class HomeController : Controller
     {
-
         public ActionResult Index()
         {
             var db = new SpecialtySelectorDbContext();
 
             var departments = db.Departments
-                .Select(x => new HomeIndexDepartmentsModel
+                .Where(y => y.DeletedOn.Equals(null))
+                .Select(x => new HomeIndexDepartmentsModel()
                 {
-                    Name = x.Name
-                });
-
+                    Id = x.Id,
+                    Name = x.Name,
+                    Description = x.Description
+                })
+                .ToList();
+           
             return View(departments);
         }
     }

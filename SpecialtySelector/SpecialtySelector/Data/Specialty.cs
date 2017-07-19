@@ -1,4 +1,5 @@
-﻿using SpecialtySelector.Data.SpecialtySelectorEnums;
+﻿using System;
+using SpecialtySelector.Data.SpecialtySelectorEnums;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 
@@ -26,8 +27,10 @@ namespace SpecialtySelector.Data
         [Required]
         public FormOfEducation FormOfEducation { get; set; }
 
-        [StringLength(600)]
+        [StringLength(1600)]
         public string Description { get; set; }
+
+        public DateTime? DeletedOn { get; set; }
 
         public virtual ICollection<Subject> Subjects
         {

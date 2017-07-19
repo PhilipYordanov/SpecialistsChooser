@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using SpecialtySelector.Data.SpecialtySelectorEnums;
 
@@ -32,5 +33,7 @@ namespace SpecialtySelector.Data
         public string LastName { get; set; }
 
         public string TeacherInfo { get; set; }
+
+        public DateTime? FiredOn { get; set; }
     }
 }

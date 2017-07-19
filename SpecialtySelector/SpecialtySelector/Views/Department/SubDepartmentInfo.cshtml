@@ -1,0 +1,15 @@
+﻿@model IEnumerable<SpecialtySelector.Models.SubDepartment.SubDepartmentInfo>
+
+@if (this.Model.Count() != 0)
+{
+    foreach (var sbDep in Model)
+    {
+        <div>@sbDep.Name</div>
+        <div>@sbDep.Description</div>
+        <hr />
+    }
+}
+else
+{
+    <div>все още няма нищо тук .....</div>
+}

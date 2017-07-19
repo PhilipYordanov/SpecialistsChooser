@@ -4,9 +4,23 @@
     ViewBag.Title = "Home Page";
 }
 
-<div class="row">
-    @foreach (var dep in Model)
-    {
-        <div>@dep.Name</div>
-    }
-</div>
+@foreach (var dep in Model)
+{
+    <div class="row jumbotron text-center lead text-success mt-20">
+        <h1 style="word-wrap: break-word">@dep.Name</h1>
+        <hr />
+        
+        @if (dep.Description.Length < 200)
+        {
+            <h3 style="word-wrap: break-word">@dep.Description</h3>
+        }
+        else
+        {
+            <h3 style="word-wrap: break-word">@dep.Description.Substring(0, 200)...</h3>
+        }
+        <p>
+            <a class="btn btn-info" href="/Department/Details/@dep.Id">Виж повече</a>
+            <a class="btn btn-info" href="/Department/SubDepartmentInfo/@dep.Id">Виж поднаправленията</a>
+        </p>
+    </div>
+}

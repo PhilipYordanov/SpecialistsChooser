@@ -1,0 +1,16 @@
+﻿@model SpecialtySelector.Models.Departments.CreateDepartment
+
+@{
+    ViewBag.Title = "Add Department";
+}
+
+@using (Html.BeginForm("Create", "Department", FormMethod.Post))
+{
+    @Html.EditorForModel()
+
+    <div>
+        <input type="submit" value="Добави Направление"/>
+    </div>
+}
+
+

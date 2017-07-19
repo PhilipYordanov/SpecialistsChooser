@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 
 namespace SpecialtySelector.Data
@@ -40,7 +41,9 @@ namespace SpecialtySelector.Data
         [Required]
         public int Course { get; set; }
 
-        [StringLength(600)]
+        [StringLength(1600)]
         public string Description { get; set; }
+
+        public DateTime? DeletedOn { get; set; }
     }
 }

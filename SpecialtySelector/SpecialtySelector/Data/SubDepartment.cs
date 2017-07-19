@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 
@@ -20,8 +21,10 @@ namespace SpecialtySelector.Data
         [MinLength(3)]
         public string Name { get; set; }
 
-        [StringLength(600)]
+        [StringLength(1600)]
         public string Description { get; set; }
+
+        public DateTime? DeletedOn { get; set; }
 
         public virtual ICollection<Specialty> Specialties
         {
