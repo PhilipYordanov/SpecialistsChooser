@@ -1,8 +1,10 @@
-﻿using Microsoft.AspNet.Identity;
+﻿using System;
+using Microsoft.AspNet.Identity;
 using SpecialtySelector.Data;
 using SpecialtySelector.Models.Departments;
 using SpecialtySelector.Models.SubDepartment;
 using System.Linq;
+using System.Net;
 using System.Web.Mvc;
 
 namespace SpecialtySelector.Controllers
@@ -47,6 +49,7 @@ namespace SpecialtySelector.Controllers
             var db = new SpecialtySelectorDbContext();
 
             var department = db.Departments
+                .Where(d => d.DeletedOn.Equals(null))
                 .Where(d => d.Id == id)
                 .Select(d => new DepartmentDetailsModel()
                 {
@@ -61,6 +64,22 @@ namespace SpecialtySelector.Controllers
             }
 
             return View(department);
+        }
+
+        public ActionResult Delete(int id)
+        {
+            if (id == null)
+            {
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+            }
+
+            var db = new SpecialtySelectorDbContext();
+
+            Department department = db.Departments.FirstOrDefault(x => x.Id == id);
+            department.DeletedOn = DateTime.Now;
+            db.SaveChanges();
+
+            return RedirectToAction("Index", "Home");
         }
     }
 }

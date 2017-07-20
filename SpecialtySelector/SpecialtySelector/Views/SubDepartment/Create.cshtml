@@ -1,32 +1,45 @@
-﻿@using System.ServiceModel.Channels
-@using SpecialtySelector.Data
-
+﻿@using SpecialtySelector.Data
 @model SpecialtySelector.Models.SubDepartment.CreateSubDepartment
 
 @{
     ViewBag.Title = "Add Sub Department";
-    
 }
 
 @using (Html.BeginForm("Create", "SubDepartment", FormMethod.Post))
 {
     <div class="row text-center">
-        @*@Html.EditorForModel()*@
-        <p class="lead">Име:</p>
-       
+        <p class="lead">Име на поднаправлението:</p>
+        <div class="lead">
+            @Html.ValidationMessageFor(m => m.Name, "", new { @style = "color:red" })
+        </div>
         <div>
-            @Html.TextBoxFor(m => m.Name, new {style = "width:500px;"})
+            @Html.TextBoxFor(m => m.Name, new { style = "width:500px;" })
         </div>
         <p class="lead">Описание на поднарпавлението:</p>
+        <div class="lead">
+            @Html.ValidationMessageFor(m => m.Description, "", new { @style = "color:red" })
+        </div>
         <div>
-            @Html.TextAreaFor(m => m.Description, new {rows = "10", cols = "1200"})
+            @Html.TextAreaFor(m => m.Description, new { rows = "10", cols = "1200" })
         </div>
         <p class="lead">Връзка с направление :</p>
-        <div>
-             @*TODO: get departmens ID's*@
+        <div class="lead">
+            @Html.ValidationMessageFor(m => m.DepartmentId, "", new { @style = "color:red" })
         </div>
         <div>
-            <input type="submit" value="Добави Направление" />
+            @{
+                var options = new HashSet<SelectListItem>();
+                var db = new SpecialtySelectorDbContext();
+                var departments = db.Departments.ToList();
+                foreach (var department in departments)
+                {
+                    options.Add(new SelectListItem { Text = $"{department.Name}", Value = $"{department.Id}", Selected = false });
+                }
+            }
+            @Html.DropDownListFor(m => m.DepartmentId, options)
+        </div>
+        <div>
+            <input type="submit" value="Добави Поднаправление" />
         </div>
     </div>
-}
+                }

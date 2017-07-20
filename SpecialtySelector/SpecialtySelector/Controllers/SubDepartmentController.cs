@@ -1,11 +1,8 @@
-﻿using System.Collections;
-using System.Collections.Generic;
+﻿using Microsoft.AspNet.Identity;
+using SpecialtySelector.Data;
+using SpecialtySelector.Models.SubDepartment;
 using System.Linq;
 using System.Web.Mvc;
-using Microsoft.AspNet.Identity;
-using SpecialtySelector.Data;
-using SpecialtySelector.Models.Departments;
-using SpecialtySelector.Models.SubDepartment;
 
 namespace SpecialtySelector.Controllers
 {
@@ -36,6 +33,7 @@ namespace SpecialtySelector.Controllers
 
                 var db = new SpecialtySelectorDbContext();
 
+                //TODO: getting Id's test
                 db.SubDepartments.Add(subDepartment);
                 db.SaveChanges();
 
@@ -50,9 +48,11 @@ namespace SpecialtySelector.Controllers
             var db = new SpecialtySelectorDbContext();
 
             var subDepartment = db.SubDepartments
+                .Where(d=>d.DeletedOn.Equals(null))
                 .Where(d => d.Id == id)
                 .Select(d => new SubDepartmentInfo()
-                {
+                { 
+                   Id = d.Id,
                    Name = d.Name,
                    Description = d.Description
                 })

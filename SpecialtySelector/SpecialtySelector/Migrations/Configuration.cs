@@ -1,4 +1,4 @@
-using Microsoft.AspNet.Identity;
+﻿using Microsoft.AspNet.Identity;
 using Microsoft.AspNet.Identity.EntityFramework;
 using SpecialtySelector.Data;
 using System;
@@ -31,57 +31,33 @@ namespace SpecialtySelector.Migrations
             {
                 context.SubDepartments.Add(new SubDepartment()
                 {
-                    Name = "SubDepartment1",
-                    Description ="Mauris blandit aliquet elit, eget tincidunt nibh pulvinar a. Donec sollicitudin molestie malesuada. Donec rutrum congue leo eget malesuada. Vestibulum ac diam sit amet quam vehicula elementum sed sit amet dui. Donec rutrum congue leo eget malesuada. Quisque velit nisi, pretium ut lacinia in, elementum id enim. Nulla porttitor accumsan tincidunt. Quisque velit nisi, pretium ut lacinia in, elementum id enim. Curabitur non nulla sit amet nisl tempus convallis quis ac lectus. Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
+                    Name = "Икономика, общество и човешки ресурси",
+                    Description = @"Обучението по тези специалности се осъществява в Общоикономическия факултет от четири катедри с утвърдени традиции в подготовката на специалисти, експерти, мениджъри и изследователи, които успешно се реализират в сферата на държавното управление (министерства, специализирани агенции, органи на централните и местни власти), в структурите на частния бизнес, консултантски и изследователски организации, неправителствения сектор. Академичният състав на катедрите включва 73 преподаватели, от които 16 професори, 28 доценти, 18 главни асистенти и 11 асистенти.Студентите се обучават по съвременни учебни планове и програми, които непрекъснато се иновират в съзвучие с потребностите на практиката и на стандартите, възприети в европейското образователно пространство. Те комбинират фундаментална, широкопрофилна и специализираща подготовка на випускниците по специалностите от поднаправление Икономика,общество и човешки ресурси. В първи и втори курс на всички студенти от поднаправлението се предлагат задължителни и избираеми дисциплини от общоуниверситетски блок на направление Икономика. В трети курс се изучават факултетни задължителни и избираеми дисциплини, а в четвърти – дисциплини по избраната специалност. В процеса на преподаване се прилагат съвременни образователни технологии, чрез които випускниците придобиват знания, умения и компетенции, които са предпоставка за успешна професионална реализация на българския и на европейския трудов пазар.",
                     DepartmentId = 1
                 });
                 context.SubDepartments.Add(new SubDepartment()
                 {
-                    Name = "SubDepartment2",
-                    Description = "Mauris blandit aliquet elit, eget tincidunt nibh pulvinar a. Donec sollicitudin molestie malesuada. Donec rutrum congue leo eget malesuada. Vestibulum ac diam sit amet quam vehicula elementum sed sit amet dui. Donec rutrum congue leo eget malesuada. Quisque velit nisi, pretium ut lacinia in, elementum id enim. Nulla porttitor accumsan tincidunt. Quisque velit nisi, pretium ut lacinia in, elementum id enim. Curabitur non nulla sit amet nisl tempus convallis quis ac lectus. Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
+                    Name = "Икономика и бизнес",
+                    Description = @"Разработена със съдействие на бизнеса и чуждес-транни партньори, специалността осигурява кон-курентни предимства на подготвяните висококва-лифицирани специалисти по бизнес анализи и оценки,планиране, организиране и контрол на ресурси и про-цеси, управление на инвестиции, човешки ресурси имаркетинг в компании на реалната икономика.В трети курс се изучават задължителни и из-бираеми факултетни учебни дисциплини: ""Бизнесмениджмънт"", ""Иновации в бизнеса"", ""Управлениена човешките ресурси"", ""Финансиране на бизнеса"",""Корпоративен риск мениджмънт"", ""Маркетинговиизследвания"", ""Управление на качеството"", ""Банководело"", ""Счетоводство на бизнес организацията"", ""Нелоялна конкуренция"", ""Застраховане"", ""Организационна култу-ра"", ""Бизнес преговори"", ""Бизнес предприемачество"", ""Фирмена сигурност и икономическо разузнаване"" и др.",
                     DepartmentId = 1
                 });
                 context.SubDepartments.Add(new SubDepartment()
                 {
-                    Name = "SubDepartment3",
-                    Description = "Mauris blandit aliquet elit, eget tincidunt nibh pulvinar a. Donec sollicitudin molestie malesuada. Donec rutrum congue leo eget malesuada. Vestibulum ac diam sit amet quam vehicula elementum sed sit amet dui. Donec rutrum congue leo eget malesuada. Quisque velit nisi, pretium ut lacinia in, elementum id enim. Nulla porttitor accumsan tincidunt. Quisque velit nisi, pretium ut lacinia in, elementum id enim. Curabitur non nulla sit amet nisl tempus convallis quis ac lectus. Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
+                    Name = "Икономика и инфраструктура",
+                    Description = @"Днешният факултет е продължител на факултетите ""Търговски"", ""Търговско-транспортен"", ""Инфраструктура и услуги"". На 31.05.1995 г. с решение на Академичния съвет е преименуван на факултет ""Икономика на инфраструктурата"" като самостоятелно звено към УНСС. В него по шест специалности се обучават студенти в бакалавърска, магистърска степен и докторанти.Основната дейност на факултета е обучението в бакалавърски, магистърски, докторски програми и подготовката на специалисти по организация и управление на дейностите, свързани с развитието на инфраструктурата, мениджмънта на инфраструктурните проекти и публичната администрация.Факултетът подготвя специалисти и мениджъри за най-интензивно развиващия се сектор на българската икономика – инфраструктурният, където са насочени преобладаващата част от бюджетните инвестиции и инвестициите по еврофондовете.",
+                   DepartmentId = 1
+                });
+                context.SubDepartments.Add(new SubDepartment()
+                {
+                    Name = "ИКОНОМИКА С ЧУЖДОЕЗИКОВО ОБУЧЕНИЕ",
+                     Description = @"Обучението по специалност ""Международниикономически отношения"" има за своя основна целширокопрофилната подготовка на професионалистисъс задълбочени общоикономически и управленскизнания, както и със знания и умения в специфичнатаобласт на международните икономически отноше-ния и институции, европейската икономическа ин-теграция, международните финанси, международниябизнес, фирмено сътрудничество и маркетинг.",
                     DepartmentId = 1
                 });
                 context.SubDepartments.Add(new SubDepartment()
                 {
-                    Name = "SubDepartment1",
-                    Description = "Mauris blandit aliquet elit, eget tincidunt nibh pulvinar a. Donec sollicitudin molestie malesuada. Donec rutrum congue leo eget malesuada. Vestibulum ac diam sit amet quam vehicula elementum sed sit amet dui. Donec rutrum congue leo eget malesuada. Quisque velit nisi, pretium ut lacinia in, elementum id enim. Nulla porttitor accumsan tincidunt. Quisque velit nisi, pretium ut lacinia in, elementum id enim. Curabitur non nulla sit amet nisl tempus convallis quis ac lectus. Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
+                    Name = "МЕЖДУНАРОДНИ ОТНОШЕНИЯ",
+                    Description = @"Учебният план на специалността отразява 30-годишната традиция напреподаването и изследванията в УНСС в тази област и отчита опита наводещите университети в чужбина. Студентите получават задълбочена под-готовка по история и теория на международните отношения и външнатаполитика, методи и техники на анализ, външната политика на България и наосновни участници в международното общуване, национална и международнасигурност, многостранна дипломация, преговори. Голямо предимство е полу-чаването на много добра подготовка по два чужди езика. ",
                     DepartmentId = 2
-                });
-                context.SubDepartments.Add(new SubDepartment()
-                {
-                    Name = "SubDepartment2",
-                    Description = "Mauris blandit aliquet elit, eget tincidunt nibh pulvinar a. Donec sollicitudin molestie malesuada. Donec rutrum congue leo eget malesuada. Vestibulum ac diam sit amet quam vehicula elementum sed sit amet dui. Donec rutrum congue leo eget malesuada. Quisque velit nisi, pretium ut lacinia in, elementum id enim. Nulla porttitor accumsan tincidunt. Quisque velit nisi, pretium ut lacinia in, elementum id enim. Curabitur non nulla sit amet nisl tempus convallis quis ac lectus. Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
-                    DepartmentId = 2
-                });
-                context.SubDepartments.Add(new SubDepartment()
-                {
-                    Name = "SubDepartment3",
-                    Description = "Mauris blandit aliquet elit, eget tincidunt nibh pulvinar a. Donec sollicitudin molestie malesuada. Donec rutrum congue leo eget malesuada. Vestibulum ac diam sit amet quam vehicula elementum sed sit amet dui. Donec rutrum congue leo eget malesuada. Quisque velit nisi, pretium ut lacinia in, elementum id enim. Nulla porttitor accumsan tincidunt. Quisque velit nisi, pretium ut lacinia in, elementum id enim. Curabitur non nulla sit amet nisl tempus convallis quis ac lectus. Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
-                    DepartmentId = 2
-                });
-                context.SubDepartments.Add(new SubDepartment()
-                {
-                    Name = "SubDepartment1",
-                    Description = "Mauris blandit aliquet elit, eget tincidunt nibh pulvinar a. Donec sollicitudin molestie malesuada. Donec rutrum congue leo eget malesuada. Vestibulum ac diam sit amet quam vehicula elementum sed sit amet dui. Donec rutrum congue leo eget malesuada. Quisque velit nisi, pretium ut lacinia in, elementum id enim. Nulla porttitor accumsan tincidunt. Quisque velit nisi, pretium ut lacinia in, elementum id enim. Curabitur non nulla sit amet nisl tempus convallis quis ac lectus. Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
-                    DepartmentId = 3
-                });
-                context.SubDepartments.Add(new SubDepartment()
-                {
-                    Name = "SubDepartment2",
-                    Description = "Mauris blandit aliquet elit, eget tincidunt nibh pulvinar a. Donec sollicitudin molestie malesuada. Donec rutrum congue leo eget malesuada. Vestibulum ac diam sit amet quam vehicula elementum sed sit amet dui. Donec rutrum congue leo eget malesuada. Quisque velit nisi, pretium ut lacinia in, elementum id enim. Nulla porttitor accumsan tincidunt. Quisque velit nisi, pretium ut lacinia in, elementum id enim. Curabitur non nulla sit amet nisl tempus convallis quis ac lectus. Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
-                    DepartmentId = 3
-                });
-                context.SubDepartments.Add(new SubDepartment()
-                {
-                    Name = "SubDepartment3",
-                    Description = "Mauris blandit aliquet elit, eget tincidunt nibh pulvinar a. Donec sollicitudin molestie malesuada. Donec rutrum congue leo eget malesuada. Vestibulum ac diam sit amet quam vehicula elementum sed sit amet dui. Donec rutrum congue leo eget malesuada. Quisque velit nisi, pretium ut lacinia in, elementum id enim. Nulla porttitor accumsan tincidunt. Quisque velit nisi, pretium ut lacinia in, elementum id enim. Curabitur non nulla sit amet nisl tempus convallis quis ac lectus. Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
-                    DepartmentId = 3
                 });
             }
         }
@@ -90,18 +66,13 @@ namespace SpecialtySelector.Migrations
         {
             context.Departments.Add(new Department()
             {
-                Name = "Department1",
-                Description = "Mauris blandit aliquet elit, eget tincidunt nibh pulvinar a. Donec sollicitudin molestie malesuada. Donec rutrum congue leo eget malesuada. Vestibulum ac diam sit amet quam vehicula elementum sed sit amet dui. Donec rutrum congue leo eget malesuada. Quisque velit nisi, pretium ut lacinia in, elementum id enim. Nulla porttitor accumsan tincidunt. Quisque velit nisi, pretium ut lacinia in, elementum id enim. Curabitur non nulla sit amet nisl tempus convallis quis ac lectus. Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
+                Name = "Икономика",
+                Description = @"Икономиката се състои от икономическата система на дадена страна или определен регион, работните, капиталовите и земните ресурси, икономическите агенти, които социално участват в производството, обмяната, дистрибуцията и консумирането на стоки и услуги в тази област или регион. Дадена икономика е крайният резултат от прогреса, който включва техническа еволюция, история [1] и социална организация, както и нейната география, естествени ресурси и екология, като основни фактори. Тези фактори определят контекста, съдържанието и съвкупността от условия и параметри, при които икономиката функционира. Икономиката е неотделима част от историята и устройството на обществото, произходът на думата може да бъде проследено до Древна Гърция"
             });
             context.Departments.Add(new Department()
             {
-                Name = "Department2",
-                Description = "Mauris blandit aliquet elit, eget tincidunt nibh pulvinar a. Donec sollicitudin molestie malesuada. Donec rutrum congue leo eget malesuada. Vestibulum ac diam sit amet quam vehicula elementum sed sit amet dui. Donec rutrum congue leo eget malesuada. Quisque velit nisi, pretium ut lacinia in, elementum id enim. Nulla porttitor accumsan tincidunt. Quisque velit nisi, pretium ut lacinia in, elementum id enim. Curabitur non nulla sit amet nisl tempus convallis quis ac lectus. Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
-            });
-            context.Departments.Add(new Department()
-            {
-                Name = "Department3",
-                Description = "Mauris blandit aliquet elit, eget tincidunt nibh pulvinar a. Donec sollicitudin molestie malesuada. Donec rutrum congue leo eget malesuada. Vestibulum ac diam sit amet quam vehicula elementum sed sit amet dui. Donec rutrum congue leo eget malesuada. Quisque velit nisi, pretium ut lacinia in, elementum id enim. Nulla porttitor accumsan tincidunt. Quisque velit nisi, pretium ut lacinia in, elementum id enim. Curabitur non nulla sit amet nisl tempus convallis quis ac lectus. Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
+                Name = "ПОЛИТИЧЕСКИ НАУКИ",
+                Description = @"В специалностите от това професионално направление студентитеот първи и втори курс изучават университетски учебни дисциплини:Задължителни учебни дисциплини: ""Въведение в политологията"", ""Иконо-мика и публичен сектор"", ""Политическа история на Европа и САЩ до Първа-та световна война"", ""История на политическите идеи"", ""Философия"", ""Съ-временни политически теории и доктрини"", ""Увод във външната политика"",""Политическа история на модерния свят"", ""Геополитика"", ""Политически мар-3кетинг"", ""Конституционно право"", ""Европейска интеграция"", ""Националниятвъпрос на Балканите"", ""Съвременни политически системи"", ""Външна поли-тика на България"", ""Методология и методика на политическия анализ"", ""Ос-нови на управлението"", чужд език, ""Физкултура и спорт"".Избираеми учебни дисциплини: ""Информационни системи и технологии"",""Математика"", ""Социология"", ""Политическа психология"", ""Публични финанси"",""Интелектуална собственост и бизнес"", ""Международно публично право"",""Административно право"" и др"
             });
         }
 
