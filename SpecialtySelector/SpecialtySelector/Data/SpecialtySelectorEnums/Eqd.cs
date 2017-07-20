@@ -3,10 +3,13 @@
     public enum Eqd
     {
         #region Eqd in BUlgarian
+
         // Бакалавър
         // Магистър
         // Докторант
-        #endregion
+
+        #endregion Eqd in BUlgarian
+
         Bachelor,
         Master,
         Doctorate

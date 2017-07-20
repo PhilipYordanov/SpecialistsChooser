@@ -1,9 +1,9 @@
-﻿using SpecialtySelector.Models.Departments;
-using System.Web.Mvc;
-using Microsoft.AspNet.Identity;
+﻿using Microsoft.AspNet.Identity;
 using SpecialtySelector.Data;
-using System.Linq;
+using SpecialtySelector.Models.Departments;
 using SpecialtySelector.Models.SubDepartment;
+using System.Linq;
+using System.Web.Mvc;
 
 namespace SpecialtySelector.Controllers
 {
@@ -20,7 +20,7 @@ namespace SpecialtySelector.Controllers
         [HttpPost]
         public ActionResult Create(CreateDepartment departmentModel)
         {
-            if (this.ModelState.IsValid && departmentModel != null)
+            if (this.ModelState.IsValid && departmentModel.Description != null && departmentModel.Name != null)
             {
                 var adminId = this.User.Identity.GetUserId();
 
@@ -36,7 +36,7 @@ namespace SpecialtySelector.Controllers
                 db.Departments.Add(department);
                 db.SaveChanges();
 
-               return RedirectToAction("Details", new { id = department.Id });
+                return RedirectToAction("Details", new { id = department.Id });
             }
 
             return View(departmentModel);
@@ -61,23 +61,6 @@ namespace SpecialtySelector.Controllers
             }
 
             return View(department);
-        }
-
-        public ActionResult SubDepartmentInfo(int id)
-        {
-            var db = new SpecialtySelectorDbContext();
-
-            var subDepartments = db.SubDepartments
-                .Where(sb => sb.DepartmentId == id)
-                .Select(sb => new SubDepartmentInfo()
-                {
-                    Id = sb.Id,
-                    Name = sb.Name,
-                    Description = sb.Description
-                })
-                .ToList();
-
-            return View(subDepartments);
         }
     }
 }

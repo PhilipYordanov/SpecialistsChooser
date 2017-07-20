@@ -1,14 +1,14 @@
-﻿using System;
+﻿using SpecialtySelector.Data.SpecialtySelectorEnums;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
-using SpecialtySelector.Data.SpecialtySelectorEnums;
 
 namespace SpecialtySelector.Data
 {
     public class Teacher
     {
         private ICollection<Subject> subjects;
-        
+
         public Teacher()
         {
             this.subjects = new HashSet<Subject>();
@@ -19,7 +19,7 @@ namespace SpecialtySelector.Data
             get { return this.subjects; }
             set { this.subjects = value; }
         }
-        
+
         public int Id { get; set; }
         public Degree Degree { get; set; }
         public AcademicTitle AcademicTitle { get; set; }

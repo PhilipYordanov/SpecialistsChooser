@@ -1,9 +1,9 @@
-﻿using System.Data.Entity;
+﻿using SpecialtySelector.Data;
+using SpecialtySelector.Migrations;
+using System.Data.Entity;
 using System.Web.Mvc;
 using System.Web.Optimization;
 using System.Web.Routing;
-using SpecialtySelector.Data;
-using SpecialtySelector.Migrations;
 
 namespace SpecialtySelector
 {
@@ -11,7 +11,7 @@ namespace SpecialtySelector
     {
         protected void Application_Start()
         {
-            Database.SetInitializer(new MigrateDatabaseToLatestVersion<SpecialtySelectorDbContext,Configuration>());
+            Database.SetInitializer(new MigrateDatabaseToLatestVersion<SpecialtySelectorDbContext, Configuration>());
             AreaRegistration.RegisterAllAreas();
             FilterConfig.RegisterGlobalFilters(GlobalFilters.Filters);
             RouteConfig.RegisterRoutes(RouteTable.Routes);

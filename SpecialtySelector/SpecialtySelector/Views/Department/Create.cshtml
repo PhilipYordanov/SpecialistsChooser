@@ -1,4 +1,6 @@
-﻿@model SpecialtySelector.Models.Departments.CreateDepartment
+﻿@using System.ServiceModel.Channels
+
+@model SpecialtySelector.Models.Departments.CreateDepartment
 
 @{
     ViewBag.Title = "Add Department";
@@ -6,11 +8,24 @@
 
 @using (Html.BeginForm("Create", "Department", FormMethod.Post))
 {
-    @Html.EditorForModel()
-
-    <div>
-        <input type="submit" value="Добави Направление"/>
+    <div class="row text-center">
+        @*@Html.EditorForModel()*@
+        <p class="lead">Име:</p>
+        <div class="lead">
+            @Html.ValidationMessageFor(m=>m.Name, "", new { @style = "color:red" })
+        </div>
+        <div>
+            @Html.TextBoxFor(m => m.Name, new {style = "width:500px;"})
+        </div>
+        <p class="lead">Описание на направлението:</p>
+        <div class="lead">
+            @Html.ValidationMessageFor(m => m.Description, "", new { @style = "color:red" })
+        </div>
+        <div>
+            @Html.TextAreaFor(m => m.Description, new {rows = "10", cols = "1200"})
+        </div>
+        <div>
+            <input type="submit" value="Добави Направление" />
+        </div>
     </div>
 }
-
-

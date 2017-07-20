@@ -6,7 +6,6 @@
     <title>Specialty selector - @ViewBag.Title</title>
     @Styles.Render("~/Content/css")
     @Scripts.Render("~/bundles/modernizr")
-
 </head>
 <body>
     <div class="navbar navbar-inverse navbar-fixed-top">
@@ -24,6 +23,7 @@
                     @if (Request.IsAuthenticated)
                     {
                         <li>@Html.ActionLink("Добави направление", "Create", "Department")</li>
+                        <li>@Html.ActionLink("Добави поднаправление", "Create", "SubDepartment")</li>
                     }
                 </ul>
                 @Html.Partial("_LoginPartial")

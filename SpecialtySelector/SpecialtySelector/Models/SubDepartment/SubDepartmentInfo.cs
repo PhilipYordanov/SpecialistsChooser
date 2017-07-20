@@ -13,5 +13,7 @@ namespace SpecialtySelector.Models.SubDepartment
 
         [StringLength(1600)]
         public string Description { get; set; }
+
+        public int? DepartmentId { get; set; }
     }
 }

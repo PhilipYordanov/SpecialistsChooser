@@ -1,4 +1,4 @@
-﻿@model SpecialtySelector.Models.Departments.DepartmentDetailsModel
+﻿@model SpecialtySelector.Models.SubDepartment.SubDepartmentInfo
 
 @{
     ViewBag.Title = "Детайли";
@@ -11,6 +11,7 @@
         <p class="lead">@Model.Description</p>
     </div>
     <p>
-        <a class="btn btn-info" href="\">Назад към главната страница</a>
+        @*TODO: back to sub department *@ 
+        <a class="btn btn-info" href="/SubDepartment/SubDepartmentInfo/@Model.Id">Назад към главната страница</a>
     </p>
 </div>

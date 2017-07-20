@@ -1,7 +1,7 @@
-﻿using System.Linq;
-using System.Web.Mvc;
-using SpecialtySelector.Data;
+﻿using SpecialtySelector.Data;
 using SpecialtySelector.Models.Departments;
+using System.Linq;
+using System.Web.Mvc;
 
 namespace SpecialtySelector.Controllers
 {
@@ -20,7 +20,7 @@ namespace SpecialtySelector.Controllers
                     Description = x.Description
                 })
                 .ToList();
-           
+
             return View(departments);
         }
     }

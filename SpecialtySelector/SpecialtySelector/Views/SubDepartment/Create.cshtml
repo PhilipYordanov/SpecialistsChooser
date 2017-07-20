@@ -1,0 +1,32 @@
+﻿@using System.ServiceModel.Channels
+@using SpecialtySelector.Data
+
+@model SpecialtySelector.Models.SubDepartment.CreateSubDepartment
+
+@{
+    ViewBag.Title = "Add Sub Department";
+    
+}
+
+@using (Html.BeginForm("Create", "SubDepartment", FormMethod.Post))
+{
+    <div class="row text-center">
+        @*@Html.EditorForModel()*@
+        <p class="lead">Име:</p>
+       
+        <div>
+            @Html.TextBoxFor(m => m.Name, new {style = "width:500px;"})
+        </div>
+        <p class="lead">Описание на поднарпавлението:</p>
+        <div>
+            @Html.TextAreaFor(m => m.Description, new {rows = "10", cols = "1200"})
+        </div>
+        <p class="lead">Връзка с направление :</p>
+        <div>
+             @*TODO: get departmens ID's*@
+        </div>
+        <div>
+            <input type="submit" value="Добави Направление" />
+        </div>
+    </div>
+}

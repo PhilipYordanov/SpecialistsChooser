@@ -33,9 +33,9 @@ namespace SpecialtySelector.Data
         [MaxLength(1000)]
         [MinLength(1)]
         public string Name { get; set; }
-        
+
         public bool IsMandatory { get; set; }
-        
+
         public int Credits { get; set; }
 
         [Required]

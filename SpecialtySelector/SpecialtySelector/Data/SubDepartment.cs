@@ -26,6 +26,10 @@ namespace SpecialtySelector.Data
 
         public DateTime? DeletedOn { get; set; }
 
+        public string AdminId { get; set; }
+
+        public virtual User Admin { get; set; }
+
         public virtual ICollection<Specialty> Specialties
         {
             get { return this.specialties; }
@@ -34,6 +38,7 @@ namespace SpecialtySelector.Data
 
         [ForeignKey("DepartmentId")]
         public virtual Department Department { get; set; }
+
         public int? DepartmentId { get; set; }
     }
 }

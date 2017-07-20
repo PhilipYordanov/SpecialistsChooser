@@ -1,5 +1,5 @@
-﻿using System.Data.Entity;
-using Microsoft.AspNet.Identity.EntityFramework;
+﻿using Microsoft.AspNet.Identity.EntityFramework;
+using System.Data.Entity;
 
 namespace SpecialtySelector.Data
 {
@@ -13,11 +13,11 @@ namespace SpecialtySelector.Data
         public virtual IDbSet<Department> Departments { get; set; }
 
         public virtual IDbSet<SubDepartment> SubDepartments { get; set; }
-                       
+
         public virtual IDbSet<Specialty> Specialties { get; set; }
-                      
+
         public virtual IDbSet<Subject> Subjects { get; set; }
-                       
+
         public virtual IDbSet<Teacher> Teachers { get; set; }
 
         public static SpecialtySelectorDbContext Create()

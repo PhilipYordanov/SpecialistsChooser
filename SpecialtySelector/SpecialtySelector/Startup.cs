@@ -2,6 +2,7 @@
 using Owin;
 
 [assembly: OwinStartupAttribute(typeof(SpecialtySelector.Startup))]
+
 namespace SpecialtySelector
 {
     public partial class Startup
