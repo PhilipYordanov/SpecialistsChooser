@@ -2,6 +2,7 @@
 using SpecialtySelector.Models.Departments;
 using System.Linq;
 using System.Web.Mvc;
+using SpecialtySelector.Models.SubDepartment;
 
 namespace SpecialtySelector.Controllers
 {
@@ -9,19 +10,20 @@ namespace SpecialtySelector.Controllers
     {
         public ActionResult Index()
         {
-            var db = new SpecialtySelectorDbContext();
+            using (var db = new SpecialtySelectorDbContext())
+            {
+                var departments = db.Departments
+                    .Where(y => y.DeletedOn.Equals(null))
+                    .Select(x => new HomeIndexDepartmentsModel()
+                    {
+                        Id = x.Id,
+                        Name = x.Name,
+                        Description = x.Description
+                    })
+                    .ToList();
 
-            var departments = db.Departments
-                .Where(y => y.DeletedOn.Equals(null))
-                .Select(x => new HomeIndexDepartmentsModel()
-                {
-                    Id = x.Id,
-                    Name = x.Name,
-                    Description = x.Description
-                })
-                .ToList();
-
-            return View(departments);
+                return View(departments);
+            }
         }
     }
 }

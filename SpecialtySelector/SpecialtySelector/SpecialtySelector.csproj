@@ -196,6 +196,7 @@
     <Compile Include="Controllers\DepartmentController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
+    <Compile Include="Controllers\SpecialtyController.cs" />
     <Compile Include="Controllers\SubDepartmentController.cs" />
     <Compile Include="Data\Department.cs" />
     <Compile Include="Data\Specialty.cs" />
@@ -219,6 +220,7 @@
     <Compile Include="Models\Departments\CreateDepartment.cs" />
     <Compile Include="Models\Departments\DepartmentDetailsModel.cs" />
     <Compile Include="Models\Departments\HomeIndexDepartmentsModel.cs" />
+    <Compile Include="Models\Departments\UpdateDepartment.cs" />
     <Compile Include="Models\ManageModels\AddPhoneNumberViewModel.cs" />
     <Compile Include="Models\ManageModels\ChangePasswordViewModel.cs" />
     <Compile Include="Models\ManageModels\ConfigureTwoFactorViewModel.cs" />
@@ -232,8 +234,12 @@
     <Compile Include="Models\AccountModels\VerifyCodeViewModel.cs" />
     <Compile Include="Models\ManageModels\SetPasswordViewModel.cs" />
     <Compile Include="Models\ManageModels\VerifyPhoneNumberViewModel.cs" />
+    <Compile Include="Models\Specialties\CreateSpecialty.cs" />
+    <Compile Include="Models\Specialties\SpecialtyInfo.cs" />
     <Compile Include="Models\SubDepartment\CreateSubDepartment.cs" />
+    <Compile Include="Models\SubDepartment\AllSubDepartments.cs" />
     <Compile Include="Models\SubDepartment\SubDepartmentInfo.cs" />
+    <Compile Include="Models\SubDepartment\UpdateSubDepartment.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Startup.cs" />
   </ItemGroup>
@@ -308,6 +314,12 @@
     <Content Include="Views\SubDepartment\SubDepartmentInfo.cshtml" />
     <Content Include="Views\SubDepartment\Create.cshtml" />
     <Content Include="Views\SubDepartment\Details.cshtml" />
+    <Content Include="Views\Department\Update.cshtml" />
+    <Content Include="Views\SubDepartment\Update.cshtml" />
+    <Content Include="Views\SubDepartment\AllSubDepartments.cshtml" />
+    <Content Include="Views\Specialty\Create.cshtml" />
+    <Content Include="Views\Specialty\Details.cshtml" />
+    <Content Include="Views\Specialty\SpecialtyInfo.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

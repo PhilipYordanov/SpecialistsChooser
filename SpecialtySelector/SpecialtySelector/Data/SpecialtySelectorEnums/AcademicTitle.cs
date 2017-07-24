@@ -1,4 +1,6 @@
-﻿namespace SpecialtySelector.Data.SpecialtySelectorEnums
+﻿using System.ComponentModel.DataAnnotations;
+
+namespace SpecialtySelector.Data.SpecialtySelectorEnums
 {
     public enum AcademicTitle
     {
@@ -12,9 +14,13 @@
 
         #endregion Academic titles in Bulgarian
 
+            [Display(Name = "Асистент")]
         Assistant,
+            [Display(Name = "Главен асистент")]
         ChiefAssistant,
+            [Display(Name = "доцент")]
         AssociateProfessor,
+            [Display(Name = "професор")]
         Professor
     }
 }

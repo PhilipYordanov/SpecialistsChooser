@@ -21,24 +21,24 @@
             <div class="row">
                 <a class="btn btn-info" href="/Department/Details/@dep.Id">Виж повече</a>
                 <a class="btn btn-info" href="/SubDepartment/SubDepartmentInfo/@dep.Id">Виж поднаправленията</a>
-                <br/>
-                <br/>
+                <br />
+                <br />
                 @{if (Request.IsAuthenticated)
                     {
-                        <div class="row">
-                            <div class="col-md-6 text-right">
-                                @using (Html.BeginForm("Delete", "Department", new { Id = dep.Id }, FormMethod.Post))
+                    <div class="row">
+                        <div class="col-md-6 text-right">
+                            @using (Html.BeginForm("Delete", "Department", new { Id = dep.Id }, FormMethod.Post))
                                 {
-                                    <input class="btn btn-danger" type="submit" value="Изтриване" />
+                                <input class="btn btn-danger" type="submit" value="Изтриване" />
                                 }
-                            </div>
-                            <div class="col-md-6 text-left">
-                                @using (Html.BeginForm("Update", "Department", new { Id = dep.Id }, FormMethod.Post))
-                                {
-                                    <input class="btn btn-success" type="submit" value="Обновяване" />
-                                }
-                            </div>
                         </div>
+                        <div class="col-md-6 text-left">
+                            @using (Html.BeginForm("Update", "Department", new { Id = dep.Id }, FormMethod.Get))
+                                {
+                                <input class="btn btn-success" type="submit" value="Редактирай" />
+                                }
+                        </div>
+                    </div>
                     }
                 }
             </div>

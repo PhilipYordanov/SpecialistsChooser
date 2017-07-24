@@ -17,6 +17,7 @@
                     <span class="icon-bar"></span>
                 </button>
                 @Html.ActionLink("Начало", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })
+                @Html.ActionLink("Поднаправления", "AllSubDepartments", "SubDepartment", new { area = "" }, new { @class = "navbar-brand" })
             </div>
             <div class="navbar-collapse collapse">
                 <ul class="nav navbar-nav">
@@ -24,6 +25,7 @@
                     {
                         <li>@Html.ActionLink("Добави направление", "Create", "Department")</li>
                         <li>@Html.ActionLink("Добави поднаправление", "Create", "SubDepartment")</li>
+                        <li>@Html.ActionLink("Добави Специалност","Create","Specialty")</li>
                     }
                 </ul>
                 @Html.Partial("_LoginPartial")

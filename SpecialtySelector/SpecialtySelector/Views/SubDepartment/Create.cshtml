@@ -1,5 +1,4 @@
-﻿@using SpecialtySelector.Data
-@model SpecialtySelector.Models.SubDepartment.CreateSubDepartment
+﻿@model SpecialtySelector.Models.SubDepartment.CreateSubDepartment
 
 @{
     ViewBag.Title = "Add Sub Department";
@@ -17,26 +16,24 @@
         </div>
         <p class="lead">Описание на поднарпавлението:</p>
         <div class="lead">
-            @Html.ValidationMessageFor(m => m.Description, "", new { @style = "color:red" })
+            @Html.ValidationMessageFor(m => m.Description, "", new { style = "color:red" })
         </div>
         <div>
             @Html.TextAreaFor(m => m.Description, new { rows = "10", cols = "1200" })
         </div>
         <p class="lead">Връзка с направление :</p>
         <div class="lead">
-            @Html.ValidationMessageFor(m => m.DepartmentId, "", new { @style = "color:red" })
+            @Html.ValidationMessageFor(m => m.DepartmentId, "", new { style = "color:red" })
         </div>
         <div>
             @{
-                var options = new HashSet<SelectListItem>();
-                var db = new SpecialtySelectorDbContext();
-                var departments = db.Departments.ToList();
-                foreach (var department in departments)
+                var departmentsList = new HashSet<SelectListItem>();
+                foreach (var d in ViewBag.Departments)
                 {
-                    options.Add(new SelectListItem { Text = $"{department.Name}", Value = $"{department.Id}", Selected = false });
+                    departmentsList.Add(new SelectListItem { Text = string.Format((string)"{0}", (object)d.Name), Value = string.Format((string)"{0}", (object)d.Id), Selected = false });
                 }
             }
-            @Html.DropDownListFor(m => m.DepartmentId, options)
+            @Html.DropDownListFor(m => m.DepartmentId, departmentsList)
         </div>
         <div>
             <input type="submit" value="Добави Поднаправление" />

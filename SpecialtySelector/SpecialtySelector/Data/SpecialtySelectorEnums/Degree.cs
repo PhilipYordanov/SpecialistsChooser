@@ -1,4 +1,6 @@
-﻿namespace SpecialtySelector.Data.SpecialtySelectorEnums
+﻿using System.ComponentModel.DataAnnotations;
+
+namespace SpecialtySelector.Data.SpecialtySelectorEnums
 {
     public enum Degree
     {
@@ -9,8 +11,9 @@
         //2. "доктор на науките".
 
         #endregion The scientific degrees in Bulgarian
-
+            [Display(Name = "Доктор")]
         Doctor,
+            [Display(Name = "Доктор на науките")]
         DoctorOfScience
     }
 }

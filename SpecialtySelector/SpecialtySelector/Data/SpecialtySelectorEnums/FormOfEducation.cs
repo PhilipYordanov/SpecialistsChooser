@@ -1,4 +1,6 @@
-﻿namespace SpecialtySelector.Data.SpecialtySelectorEnums
+﻿using System.ComponentModel.DataAnnotations;
+
+namespace SpecialtySelector.Data.SpecialtySelectorEnums
 {
     public enum FormOfEducation
     {
@@ -9,7 +11,9 @@
 
         #endregion Form of education in Bulgarian
 
+            [Display(Name = "Присъствено обучение")]
         AttendanceТraining,
+            [Display(Name = "Задочно обучение")]
         DistanceLearning
     }
 }

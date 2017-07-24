@@ -1,10 +1,8 @@
-﻿using System;
-using Microsoft.AspNet.Identity;
+﻿using Microsoft.AspNet.Identity;
 using SpecialtySelector.Data;
 using SpecialtySelector.Models.Departments;
-using SpecialtySelector.Models.SubDepartment;
+using System;
 using System.Linq;
-using System.Net;
 using System.Web.Mvc;
 
 namespace SpecialtySelector.Controllers
@@ -33,12 +31,13 @@ namespace SpecialtySelector.Controllers
                     AdminId = adminId
                 };
 
-                var db = new SpecialtySelectorDbContext();
+                using (var db = new SpecialtySelectorDbContext())
+                {
+                    db.Departments.Add(department);
+                    db.SaveChanges();
 
-                db.Departments.Add(department);
-                db.SaveChanges();
-
-                return RedirectToAction("Details", new { id = department.Id });
+                    return RedirectToAction("Details", new { id = department.Id });
+                }
             }
 
             return View(departmentModel);
@@ -46,40 +45,83 @@ namespace SpecialtySelector.Controllers
 
         public ActionResult Details(int id)
         {
-            var db = new SpecialtySelectorDbContext();
-
-            var department = db.Departments
-                .Where(d => d.DeletedOn.Equals(null))
-                .Where(d => d.Id == id)
-                .Select(d => new DepartmentDetailsModel()
-                {
-                    Name = d.Name,
-                    Description = d.Description
-                })
-                .FirstOrDefault();
-
-            if (department == null)
+            using (var db = new SpecialtySelectorDbContext())
             {
-                return HttpNotFound();
-            }
+                var department = db.Departments
+                    .Where(d => d.DeletedOn.Equals(null))
+                    .Where(d => d.Id == id)
+                    .Select(d => new DepartmentDetailsModel()
+                    {
+                        Name = d.Name,
+                        Description = d.Description
+                    })
+                    .FirstOrDefault();
 
-            return View(department);
+                return View(department);
+            }
         }
 
+        [Authorize]
         public ActionResult Delete(int id)
         {
-            if (id == null)
+            using (var db = new SpecialtySelectorDbContext())
             {
-                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+                Department department = db.Departments.FirstOrDefault(x => x.Id == id);
+
+                if (department != null)
+                {
+                    department.DeletedOn = DateTime.Now;
+                }
+
+                db.SaveChanges();
+
+                return RedirectToAction("Index", "Home");
+            }
+        }
+
+        [Authorize]
+        [HttpGet]
+        public ActionResult Update(int id)
+        {
+            using (var db = new SpecialtySelectorDbContext())
+            {
+                var department = db.Departments
+                    .Find(id);
+
+                var departmentViewModel = new UpdateDepartment
+                {
+                    Id = department.Id,
+                    Name = department.Name,
+                    Description = department.Description,
+                    AdminId = department.AdminId
+                };
+
+                return View(departmentViewModel);
+            }
+        }
+
+        [Authorize]
+        [HttpPost]
+        public ActionResult Update(UpdateDepartment updateDepartment)
+        {
+            if (ModelState.IsValid)
+            {
+                using (var db = new SpecialtySelectorDbContext())
+                {
+                    var department = db.Departments
+                        .Find(updateDepartment.Id);
+                    
+                    department.Name = updateDepartment.Name;
+                    department.Description = updateDepartment.Description;
+                    department.DeletedOn = updateDepartment.DeletedOn;
+                    db.SaveChanges();
+
+                }
+
+                return RedirectToAction("Details", new {id = updateDepartment.Id});
             }
 
-            var db = new SpecialtySelectorDbContext();
-
-            Department department = db.Departments.FirstOrDefault(x => x.Id == id);
-            department.DeletedOn = DateTime.Now;
-            db.SaveChanges();
-
-            return RedirectToAction("Index", "Home");
+            return View(updateDepartment);
         }
     }
 }

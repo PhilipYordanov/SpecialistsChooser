@@ -21,24 +21,28 @@ namespace SpecialtySelector.Data
         [MinLength(3)]
         public string Name { get; set; }
 
-        [Required]
+        [Required(ErrorMessage = "Задължително поле")]
         public Eqd Eqd { get; set; }
 
-        [Required]
+        [Required(ErrorMessage = "Задължително поле")]
         public FormOfEducation FormOfEducation { get; set; }
 
         [StringLength(1600)]
         public string Description { get; set; }
 
         public DateTime? DeletedOn { get; set; }
+       
+        public int? SubDepartmentId { get; set; }
+        public virtual SubDepartment SubDepartment { get; set; }
+
+        public string AdminId { get; set; }
+
+        public virtual User Admin { get; set; }
 
         public virtual ICollection<Subject> Subjects
         {
             get { return this.subjects; }
             set { this.subjects = value; }
         }
-
-        public int SubDepartmentId { get; set; }
-        public virtual SubDepartment SubDepartment { get; set; }
     }
 }

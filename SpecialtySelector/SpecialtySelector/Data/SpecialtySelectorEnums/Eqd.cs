@@ -1,4 +1,6 @@
-﻿namespace SpecialtySelector.Data.SpecialtySelectorEnums
+﻿using System.ComponentModel.DataAnnotations;
+
+namespace SpecialtySelector.Data.SpecialtySelectorEnums
 {
     public enum Eqd
     {
@@ -9,9 +11,11 @@
         // Докторант
 
         #endregion Eqd in BUlgarian
-
+            [Display(Name = "Бакалавър")]
         Bachelor,
+            [Display(Name = "Магистър")]
         Master,
+            [Display(Name = "Докторант")]
         Doctorate
     }
 }

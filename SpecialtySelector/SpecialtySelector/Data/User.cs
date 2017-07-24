@@ -12,11 +12,14 @@ namespace SpecialtySelector.Data
         {
             this.Departments = new HashSet<Department>();
             this.SubDepartments = new HashSet<SubDepartment>();
+            this.Specialties = new HashSet<Specialty>();
         }
 
         public virtual ICollection<Department> Departments { get; set; }
 
         public virtual ICollection<SubDepartment> SubDepartments { get; set; }
+
+        public virtual ICollection<Specialty> Specialties { get; set; }
 
         public async Task<ClaimsIdentity> GenerateUserIdentityAsync(UserManager<User> manager)
         {
