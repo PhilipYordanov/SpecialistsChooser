@@ -2,7 +2,6 @@
 using SpecialtySelector.Models.Departments;
 using System.Linq;
 using System.Web.Mvc;
-using SpecialtySelector.Models.SubDepartment;
 
 namespace SpecialtySelector.Controllers
 {

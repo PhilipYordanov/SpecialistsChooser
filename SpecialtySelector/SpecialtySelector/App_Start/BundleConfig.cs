@@ -19,10 +19,13 @@ namespace SpecialtySelector
                       "~/Scripts/bootstrap.js",
                       "~/Scripts/respond.js"));
 
+            bundles.Add(new ScriptBundle("~/bundles/specialtySelector").Include(
+                "~/Scripts/specialtySelector.js"));
+
             bundles.Add(new StyleBundle("~/Content/css").Include(
                       "~/Content/bootstrap.css",
-                      //"~/Content/SpecialtySelector",
-                      "~/Content/site.css"));
+                      "~/Content/site.css",
+                      "~/Content/SpecialtySelectorCustomeCss.css"));
         }
     }
 }

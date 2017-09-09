@@ -198,6 +198,8 @@
     <Compile Include="Controllers\ManageController.cs" />
     <Compile Include="Controllers\SpecialtyController.cs" />
     <Compile Include="Controllers\SubDepartmentController.cs" />
+    <Compile Include="Controllers\SubjectController.cs" />
+    <Compile Include="Controllers\TeacherController.cs" />
     <Compile Include="Data\Department.cs" />
     <Compile Include="Data\Specialty.cs" />
     <Compile Include="Data\SpecialtySelectorEnums\AcademicTitle.cs" />
@@ -234,12 +236,20 @@
     <Compile Include="Models\AccountModels\VerifyCodeViewModel.cs" />
     <Compile Include="Models\ManageModels\SetPasswordViewModel.cs" />
     <Compile Include="Models\ManageModels\VerifyPhoneNumberViewModel.cs" />
+    <Compile Include="Models\Specialties\AllSpecialties.cs" />
     <Compile Include="Models\Specialties\CreateSpecialty.cs" />
+    <Compile Include="Models\Specialties\SpecialtyDetailModel.cs" />
     <Compile Include="Models\Specialties\SpecialtyInfo.cs" />
+    <Compile Include="Models\Specialties\UpdateSpecialty.cs" />
     <Compile Include="Models\SubDepartment\CreateSubDepartment.cs" />
     <Compile Include="Models\SubDepartment\AllSubDepartments.cs" />
     <Compile Include="Models\SubDepartment\SubDepartmentInfo.cs" />
     <Compile Include="Models\SubDepartment\UpdateSubDepartment.cs" />
+    <Compile Include="Models\Subjects\CreateSubject.cs" />
+    <Compile Include="Models\Teachers\AllTeachers.cs" />
+    <Compile Include="Models\Teachers\CreateTeacher.cs" />
+    <Compile Include="Models\Teachers\TeacherInfo.cs" />
+    <Compile Include="Models\Teachers\UpdateTeacher.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Startup.cs" />
   </ItemGroup>
@@ -248,7 +258,7 @@
     <Content Include="Content\bootstrap-theme.min.css" />
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
-    <Content Include="Content\SpecialtySelector.css" />
+    <Content Include="Content\SpecialtySelectorCustomeCss.css" />
     <Content Include="favicon.ico" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
@@ -277,6 +287,7 @@
     <Content Include="Scripts\respond.matchmedia.addListener.js" />
     <Content Include="Scripts\respond.matchmedia.addListener.min.js" />
     <Content Include="Scripts\respond.min.js" />
+    <Content Include="Scripts\specialtySelector.js" />
     <Content Include="Web.config" />
     <Content Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
@@ -320,6 +331,14 @@
     <Content Include="Views\Specialty\Create.cshtml" />
     <Content Include="Views\Specialty\Details.cshtml" />
     <Content Include="Views\Specialty\SpecialtyInfo.cshtml" />
+    <Content Include="Views\Specialty\AllSpecialties.cshtml" />
+    <Content Include="Views\Specialty\Update.cshtml" />
+    <Content Include="Views\Teacher\AllTeachers.cshtml" />
+    <Content Include="Views\Teacher\Create.cshtml" />
+    <Content Include="Views\Teacher\Details.cshtml" />
+    <Content Include="Views\Teacher\TeacherInfo.cshtml" />
+    <Content Include="Views\Teacher\Update.cshtml" />
+    <Content Include="Views\Subject\Create.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

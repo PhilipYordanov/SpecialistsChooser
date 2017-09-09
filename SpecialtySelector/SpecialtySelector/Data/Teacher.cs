@@ -35,5 +35,9 @@ namespace SpecialtySelector.Data
         public string TeacherInfo { get; set; }
 
         public DateTime? FiredOn { get; set; }
+
+        public string AdminId { get; set; }
+
+        public virtual User Admin { get; set; }
     }
 }

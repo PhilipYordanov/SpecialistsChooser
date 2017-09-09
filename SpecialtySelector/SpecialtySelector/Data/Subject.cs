@@ -45,5 +45,9 @@ namespace SpecialtySelector.Data
         public string Description { get; set; }
 
         public DateTime? DeletedOn { get; set; }
+
+        public string AdminId { get; set; }
+
+        public virtual User Admin { get; set; }
     }
 }

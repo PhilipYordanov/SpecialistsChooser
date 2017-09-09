@@ -1,47 +1,98 @@
-﻿@model IEnumerable<SpecialtySelector.Models.Departments.HomeIndexDepartmentsModel>
+﻿@using WebGrease.Css.Extensions
+@model IEnumerable<SpecialtySelector.Models.Departments.HomeIndexDepartmentsModel>
 
 @{
     ViewBag.Title = "Home Page";
 }
 
-@foreach (var dep in Model.OrderBy(x => x.Id))
-{
-    <div class="row jumbotron text-center lead text-success mt-20">
-        <div class="col-md-12">
-            <h1 style="word-wrap: break-word">@dep.Name</h1>
-            <hr />
-            @if (dep.Description.Length < 200)
-            {
-                <h3 style="word-wrap: break-word">@dep.Description</h3>
-            }
-            else
-            {
-                <h3 style="word-wrap: break-word">@dep.Description.Substring(0, 200)...</h3>
-            }
-            <div class="row">
-                <a class="btn btn-info" href="/Department/Details/@dep.Id">Виж повече</a>
-                <a class="btn btn-info" href="/SubDepartment/SubDepartmentInfo/@dep.Id">Виж поднаправленията</a>
-                <br />
-                <br />
-                @{if (Request.IsAuthenticated)
-                    {
-                    <div class="row">
-                        <div class="col-md-6 text-right">
-                            @using (Html.BeginForm("Delete", "Department", new { Id = dep.Id }, FormMethod.Post))
-                                {
-                                <input class="btn btn-danger" type="submit" value="Изтриване" />
-                                }
-                        </div>
-                        <div class="col-md-6 text-left">
-                            @using (Html.BeginForm("Update", "Department", new { Id = dep.Id }, FormMethod.Get))
-                                {
-                                <input class="btn btn-success" type="submit" value="Редактирай" />
-                                }
-                        </div>
-                    </div>
-                    }
+@*@foreach (var dep in Model.OrderBy(x => x.Id))
+    {
+        <div class="row jumbotron text-center lead text-success mt-50">
+            <div class="col-md-12">
+                <h1 style="word-wrap: break-word">@dep.Name</h1>
+                <hr />
+                @if (dep.Description.Length < 200)
+                {
+                    <h3 style="word-wrap: break-word">@dep.Description</h3>
                 }
+                else
+                {
+                    <h3 style="word-wrap: break-word">@dep.Description.Substring(0, 200)...</h3>
+                }
+                <div class="row mt-50">
+                    <a class="btn btn-info" href="/Department/Details/@dep.Id">Виж повече</a>
+                    <a class="btn btn-info" href="/SubDepartment/SubDepartmentInfo/@dep.Id">Виж поднаправленията</a>
+                    <br />
+                    <br />
+                    @{if (Request.IsAuthenticated)
+                        {
+                            <div class="row mt-20">
+                                <div class="col-md-6 text-right">
+                                    @using (Html.BeginForm("Delete", "Department", new { Id = dep.Id }, FormMethod.Post))
+                                    {
+                                        <input class="btn btn-danger" type="submit" value="Изтриване" />
+                                    }
+                                </div>
+                                <div class="col-md-6 text-left">
+                                    @using (Html.BeginForm("Update", "Department", new { Id = dep.Id }, FormMethod.Get))
+                                    {
+                                        <input class="btn btn-success" type="submit" value="Редактирай" />
+                                    }
+                                </div>
+                            </div>
+                        }
+                    }
+                </div>
             </div>
         </div>
+                        }*@
+
+<div class=" mt-50 carouselCss text-center">
+    <div id="myCarousel" class="carousel text-center carouselCss" data-ride="carousel">
+        <div class="carousel-inner">
+            @{
+                var firstDepartmentTitle = Model.Select(x => x.Name).FirstOrDefault();
+                var firstDepartmentDescription = Model.Select(x => x.Description).FirstOrDefault();
+                var firstDepartmentId = Model.Select(x => x.Id).FirstOrDefault();
+            }
+            <div class="item active">
+                <h1 class="mt-50">@firstDepartmentTitle</h1>
+                @if (firstDepartmentDescription.Length < 200)
+                {
+                    <h3 style="word-wrap: break-word">@firstDepartmentDescription</h3>
+                }
+                else
+                {
+                    <h3 style="word-wrap: break-word">@firstDepartmentDescription.Substring(0, 200)...</h3>
+                }
+                <a class="btn btn-info" href="/Department/Details/@firstDepartmentId">Виж повече</a>
+                <a class="btn btn-info" href="/SubDepartment/SubDepartmentInfo/@firstDepartmentId">Виж поднаправленията</a>
+            </div>
+
+            @foreach (var x in Model.Skip(1).ToList().OrderBy(x => x.Id))
+            {
+                <div class="item">
+                    <h1>@x.Name</h1>
+                    @if (x.Description.Length < 200)
+                    {
+                        <h3 style="word-wrap: break-word">@x.Description</h3>
+                    }
+                    else
+                    {
+                        <h3 style="word-wrap: break-word">@x.Description.Substring(0, 200)...</h3>
+                    }
+                    <a class="btn btn-info" href="/Department/Details/@x.Id">Виж повече</a>
+                    <a class="btn btn-info" href="/SubDepartment/SubDepartmentInfo/@x.Id">Виж поднаправленията</a>
+                </div>
+            }
+        </div>
+        <a class="left carousel-control carousel-innerColor" href="#myCarousel" data-slide="prev">
+            <span class="glyphicon glyphicon-chevron-left"></span>
+            <span class="sr-only">Previous</span>
+        </a>
+        <a class="right carousel-control" href="#myCarousel" data-slide="next">
+            <span class="glyphicon glyphicon-chevron-right"></span>
+            <span class="sr-only">Next</span>
+        </a>
     </div>
-}
+</div>

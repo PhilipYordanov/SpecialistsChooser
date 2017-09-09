@@ -1,0 +1,23 @@
+﻿.mt-20 {
+    margin-top: 20px;
+}
+
+.mt-30 {
+    margin-top: 30px;
+}
+
+.mt-50 {
+    margin-top: 50px;
+}
+
+.carousel-indicators .active {
+    background-color: #fffaf0;
+}
+
+.carouselCss {
+    color: white;
+    background-color: #c34231;
+    width: auto;
+    height: 500px;
+    max-height: 500px;
+}
