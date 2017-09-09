@@ -48,8 +48,15 @@ namespace SpecialtySelector.Controllers
                     return RedirectToAction("Details", new { id = subDepartment.Id });
                 }
             }
+            using (var db = new SpecialtySelectorDbContext())
+            {
+                var departments = db.Departments.ToList();
 
-            return View(subDepartmentModel);
+                ViewBag.Departments = departments;
+
+                return View(subDepartmentModel);
+            }
+
         }
 
         public ActionResult Details(int id)

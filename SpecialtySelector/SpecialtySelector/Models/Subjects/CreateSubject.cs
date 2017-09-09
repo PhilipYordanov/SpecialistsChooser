@@ -8,9 +8,11 @@ namespace SpecialtySelector.Models.Subjects
         [Display(Name = "Име на предмет:")]
         public string Name { get; set; }
 
+        [Required(ErrorMessage = "Задължително поле")]
         [Display(Name = "Задължителен:")]
         public bool IsMandatory { get; set; }
 
+        [Required(ErrorMessage = "Задължително поле")]
         [Display(Name = "Кредити:")]
         public int Credits { get; set; }
 

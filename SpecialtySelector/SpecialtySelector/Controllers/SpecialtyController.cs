@@ -49,18 +49,26 @@ namespace SpecialtySelector.Controllers
                     db.SaveChanges();
                     var specialtiesList = db.Specialties.ToList();
                     ViewBag.Specialties = specialtiesList;
-                     return RedirectToAction("Details", new { id = specialty.Id });
+                    return RedirectToAction("Details", new { id = specialty.Id });
                 }
             }
 
-            return View(createSpecialty);
+            using (var db = new SpecialtySelectorDbContext())
+            {
+                var subDepartments = db.SubDepartments.ToList();
+
+                ViewBag.SubDepartments = subDepartments;
+
+                return View(createSpecialty);
+            }
+
         }
 
         public ActionResult SpecialtyInfo(int id)
         {
             using (var db = new SpecialtySelectorDbContext())
             {
-               
+
 
                 var subDepartments = db.Specialties
                     .Where(sb => sb.SubDepartmentId == id)

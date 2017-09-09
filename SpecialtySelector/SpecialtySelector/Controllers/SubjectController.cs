@@ -72,7 +72,18 @@ namespace SpecialtySelector.Controllers
                 }
             }
 
-            return View(createSubject);
+            using (var db = new SpecialtySelectorDbContext())
+            {
+                var teachers = db.Teachers.ToList();
+                var specialties = db.Specialties.ToList();
+
+
+                ViewBag.Teachers = teachers;
+
+                ViewBag.Specialties = specialties;
+
+                return View(createSubject);
+            }
         }
     }
 }
