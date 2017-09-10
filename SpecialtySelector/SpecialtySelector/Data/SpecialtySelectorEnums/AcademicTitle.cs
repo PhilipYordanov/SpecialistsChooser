@@ -18,9 +18,9 @@ namespace SpecialtySelector.Data.SpecialtySelectorEnums
         Assistant,
             [Display(Name = "Главен асистент")]
         ChiefAssistant,
-            [Display(Name = "доцент")]
+            [Display(Name = "Доцент")]
         AssociateProfessor,
-            [Display(Name = "професор")]
+            [Display(Name = "Професор")]
         Professor
     }
 }

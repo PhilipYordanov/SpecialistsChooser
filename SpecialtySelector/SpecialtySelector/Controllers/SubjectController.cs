@@ -1,8 +1,11 @@
 ﻿using System.Collections.Generic;
+using System.Data.Entity;
 using Microsoft.AspNet.Identity;
 using SpecialtySelector.Data;
 using System.Linq;
 using System.Web.Mvc;
+using SpecialtySelector.Models.Specialties;
+using SpecialtySelector.Models.SubDepartment;
 using SpecialtySelector.Models.Subjects;
 
 namespace SpecialtySelector.Controllers
@@ -80,6 +83,57 @@ namespace SpecialtySelector.Controllers
                 ViewBag.Specialties = specialties;
 
                 return View(createSubject);
+            }
+        }
+
+        public ActionResult AllSubjects()
+        {
+            using (var db = new SpecialtySelectorDbContext())
+            {
+                var subjects = db.Subjects
+                    .Include(x => x.Teachers)
+                    .Include(x=>x.Specialties)
+                    .Where(sp => sp.DeletedOn.Equals(null))
+                    .Select(sp => new AllSubjects()
+                    {
+                        Id = sp.Id,
+                        Name = sp.Name,
+                        Credits = sp.Credits,
+                        Course = sp.Course,
+                        IsMandatory = sp.IsMandatory
+                    })
+                    .ToList();
+
+                return View(subjects);
+            }
+        }
+
+        public ActionResult Details(int id)
+        {
+            using (var db = new SpecialtySelectorDbContext())
+            {
+                var specialties = db.Subjects
+                    .Where(sp => sp.Id == id)
+                    .Where(sp => sp.DeletedOn.Equals(null))
+                    .Select(sp => new SubjectInfo
+                    {
+                        Id = sp.Id,
+                        Name = sp.Name,
+                        Description = sp.Description,
+                        Specialties = sp.Specialties,
+                        Teachers = sp.Teachers,
+                        Course = sp.Course,
+                        Credits = sp.Credits,
+                        IsMandatory = sp.IsMandatory
+                    })
+                    .FirstOrDefault();
+
+                if (specialties == null)
+                {
+                    return HttpNotFound();
+                }
+
+                return View(specialties);
             }
         }
     }

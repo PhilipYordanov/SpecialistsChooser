@@ -3,7 +3,7 @@
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Specialty selector - @ViewBag.Title</title>
+    <title>Избор на специалност - @ViewBag.Title</title>
     @Styles.Render("~/Content/css")
     @Scripts.Render("~/bundles/modernizr")
 </head>
@@ -20,6 +20,7 @@
             @Html.ActionLink("Поднаправления", "AllSubDepartments", "SubDepartment", new { area = "" }, new { @class = "navbar-brand" })
             @Html.ActionLink("Специалности", "AllSpecialties", "Specialty", new { area = "" }, new { @class = "navbar-brand" })
             @Html.ActionLink("Преподаватели", "AllTeachers", "Teacher", new { area = "" }, new { @class = "navbar-brand" })
+            @Html.ActionLink("Предмети", "AllSubjects", "Subject", new { area = "" }, new { @class = "navbar-brand" })
         </div>
         <div class="navbar-collapse collapse">
             <ul class="nav navbar-nav">
@@ -35,10 +36,6 @@
                             <li>@Html.ActionLink("Предмет", "Create", "Subject")</li>
                         </ul>
                     </li>
-                        @*<li>@Html.ActionLink("Добави направление", "Create", "Department")</li>
-                        <li>@Html.ActionLink("Добави поднаправление", "Create", "SubDepartment")</li>
-                        <li>@Html.ActionLink("Добави Специалност","Create","Specialty")</li>
-                        <li>@Html.ActionLink("Добави Преподавател", "Create", "Teacher")</li>*@
                 }
             </ul>
             @Html.Partial("_LoginPartial")
