@@ -418,7 +418,7 @@ namespace SpecialtySelector.Controllers
                 : this(provider, redirectUri, null)
             {
             }
-
+            
             public ChallengeResult(string provider, string redirectUri, string userId)
             {
                 LoginProvider = provider;

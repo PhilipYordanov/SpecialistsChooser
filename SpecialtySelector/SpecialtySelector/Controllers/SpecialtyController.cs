@@ -1,11 +1,10 @@
-﻿using System;
-using System.Data.Entity;
-using Microsoft.AspNet.Identity;
+﻿using Microsoft.AspNet.Identity;
 using SpecialtySelector.Data;
 using SpecialtySelector.Models.Specialties;
+using System;
+using System.Data.Entity;
 using System.Linq;
 using System.Web.Mvc;
-using SpecialtySelector.Models.Departments;
 
 namespace SpecialtySelector.Controllers
 {
@@ -68,8 +67,6 @@ namespace SpecialtySelector.Controllers
         {
             using (var db = new SpecialtySelectorDbContext())
             {
-
-
                 var subDepartments = db.Specialties
                     .Where(sb => sb.SubDepartmentId == id)
                     .Where(sb => sb.DeletedOn.Equals(null))

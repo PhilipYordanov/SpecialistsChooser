@@ -1,8 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel.DataAnnotations;
-using SpecialtySelector.Data;
-using SpecialtySelector.Data.SpecialtySelectorEnums;
+﻿using SpecialtySelector.Data.SpecialtySelectorEnums;
+using System;
 
 namespace SpecialtySelector.Models.Specialties
 {

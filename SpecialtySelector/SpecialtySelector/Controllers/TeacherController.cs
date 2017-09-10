@@ -33,14 +33,14 @@ namespace SpecialtySelector.Controllers
                 using (var db = new SpecialtySelectorDbContext())
                 {
                     var adminId = this.User.Identity.GetUserId();
-                    var subnew = new List<Subject>();
+                    var subjects = new List<Subject>();
 
                     if (createTeacher.Subject != null)
                     {
                         foreach (var kvp in createTeacher.Subject)
                         {
-                            var asd = db.Subjects.FirstOrDefault(x => x.Id == kvp);
-                            subnew.Add(asd);
+                            var currentSubject = db.Subjects.FirstOrDefault(x => x.Id == kvp);
+                            subjects.Add(currentSubject);
                         }
                     }
 
@@ -54,7 +54,7 @@ namespace SpecialtySelector.Controllers
                         AcademicTitle = createTeacher.AcademicTitle,
                         Degree = createTeacher.Degree,
                         TeacherInfo = createTeacher.TeacherInfo,
-                        Subjects = subnew
+                        Subjects = subjects
                     };
 
                     db.Teachers.Add(teacher);

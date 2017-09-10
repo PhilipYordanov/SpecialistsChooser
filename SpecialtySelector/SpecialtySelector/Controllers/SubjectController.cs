@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNet.Identity;
+﻿using System.Collections.Generic;
+using Microsoft.AspNet.Identity;
 using SpecialtySelector.Data;
 using System.Linq;
 using System.Web.Mvc;
@@ -17,9 +18,7 @@ namespace SpecialtySelector.Controllers
                 var teachers = db.Teachers.ToList();
                 var specialties = db.Specialties.ToList();
 
-
                 ViewBag.Teachers = teachers;
-
                 ViewBag.Specialties = specialties;
 
                 return View();
@@ -36,6 +35,21 @@ namespace SpecialtySelector.Controllers
                 {
                     var adminId = this.User.Identity.GetUserId();
 
+                    var listOfTeachers = new List<Teacher>();
+                    var listOfSpecialties = new List<Specialty>();
+
+                    foreach (var teacher in createSubject.Teacher)
+                    {
+                        var currentTeacher = db.Teachers.FirstOrDefault(t => t.Id == teacher);
+                        listOfTeachers.Add(currentTeacher);
+                    }
+
+                    foreach (var specialty in createSubject.Specialty)
+                    {
+                        var currentSpecialty = db.Specialties.FirstOrDefault(s => s.Id == specialty);
+                        listOfSpecialties.Add(currentSpecialty);
+                    }
+
                     var subject = new Subject()
                     {
                         Name = createSubject.Name,
@@ -43,31 +57,14 @@ namespace SpecialtySelector.Controllers
                         Credits = createSubject.Credits,
                         Course = createSubject.Course,
                         Description = createSubject.Description,
-                        //SpecialtyId = createSubject.SpecialtyId,
-                        //TeacherId = createSubject.TeacherId,
+                        Specialties = listOfSpecialties,
+                        Teachers = listOfTeachers,
                         AdminId = adminId
-
                     };
-
-                    if (createSubject.TeacherId != null)
-                    {
-                        //foreach (var id in createSubject.TeacherId)
-                        //{
-                        //    var teacher = db.Teachers.Find(id);
-
-                        //    subject.Teachers.Add(teacher);
-                        //}
-                    }
 
                     db.Subjects.Add(subject);
                     db.SaveChanges();
-                    //var specialties = db.Specialties.ToList();
-                    //ViewBag.Specialties = specialties;
 
-                    //var teachers = db.Teachers.ToList();
-                    //ViewBag.Teachers = teachers;
-
-                    //return RedirectToAction("Details", new { id = subject.Id });
                     return RedirectToAction("Index", "Home");
                 }
             }

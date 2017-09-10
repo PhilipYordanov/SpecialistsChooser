@@ -1,4 +1,7 @@
-﻿@model IEnumerable<SpecialtySelector.Models.Specialties.AllSpecialties>
+﻿@using System.ComponentModel.DataAnnotations
+@using System.Diagnostics.Eventing.Reader
+@using System.Reflection
+@model IEnumerable<SpecialtySelector.Models.Specialties.AllSpecialties>
 
 @foreach (var s in Model)
 {
@@ -10,12 +13,30 @@
         <h3 class="lead">
             Име на специалността: @s.Name
         </h3>
-        <p class="lead">
-            Образователна квалификационна степен: @s.Eqd
-        </p>
-        <p class="lead">
-            Форма на обучение: @s.FormOfEducation
-        </p>
+        @{
+            var modelEqd = s.Eqd;
+            var displayEqd = modelEqd
+                .GetType()
+                .GetMember(s.Eqd.ToString())
+                .FirstOrDefault()
+                .GetCustomAttribute<DisplayAttribute>()
+                .GetName();
+
+            var modelFormOfEducation = s.FormOfEducation;
+            var displayFormOfEducation = modelFormOfEducation
+                .GetType()
+                .GetMember(s.FormOfEducation.ToString())
+                .FirstOrDefault()
+                .GetCustomAttribute<DisplayAttribute>()
+                .GetName();
+            <p class="lead">
+                Образователна квалификационна степен: @displayEqd
+            </p>
+            <p class="lead">
+                Форма на обучение: @displayFormOfEducation
+            </p>
+        }
+       
         <div>
             <div class="lead">@s.Description</div>
         </div>
@@ -31,10 +52,22 @@
                     {
                         <input class="btn btn-success" type="submit" value="Редактирай" />
                     }
+                    @using (Html.BeginForm("Details", "Specialty", new { Id = s.Id }, FormMethod.Get))
+                    {
+                        <input class="btn btn-success" type="submit" value="Виж повече" />
+                    }
                 </div>
 
             }
+          else
+          {
+              using (Html.BeginForm("Details", "Specialty", new { Id = s.Id }, FormMethod.Get))
+               {
+                   <input class="btn btn-success" type="submit" value="Виж повече" />
+               }
+          }
         }
+        
     </div>
 
             }

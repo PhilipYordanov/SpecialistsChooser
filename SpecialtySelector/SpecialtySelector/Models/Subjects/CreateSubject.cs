@@ -1,4 +1,6 @@
-﻿using System.ComponentModel.DataAnnotations;
+﻿using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
+using SpecialtySelector.Data;
 
 namespace SpecialtySelector.Models.Subjects
 {
@@ -24,8 +26,16 @@ namespace SpecialtySelector.Models.Subjects
         [Display(Name = "Кратко описание на предмета:")]
         public string Description { get; set; }
 
-        public int? SpecialtyId { get; set; }
+       // public int? SpecialtyId { get; set; }
 
-        public int? TeacherId { get; set; }
+       // public int? TeacherId { get; set; }
+
+        public List<int> Specialty { get; set; }
+
+        public ICollection<Subject> Specialties { get; set; }
+
+        public List<int> Teacher { get; set; }
+
+        public ICollection<Subject> Teachers { get; set; }
     }
 }
