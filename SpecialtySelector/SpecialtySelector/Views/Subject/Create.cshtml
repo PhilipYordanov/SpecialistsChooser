@@ -53,6 +53,7 @@
         <div class="lead">
             @Html.ValidationMessageFor(m => m.Teacher, "", new { style = "color:red" })
         </div>
+        <p class="lead">Преподаватели:</p>
         <div>
             @{
                 var teacherList = new HashSet<SelectListItem>();
