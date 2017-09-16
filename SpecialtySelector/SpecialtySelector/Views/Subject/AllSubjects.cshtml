@@ -11,24 +11,43 @@
             Име на предмет: @s.Name
         </h2>
         <h3 class="lead">
-            Курс: @s.Course / Кредити: @s.Credits 
+            Курс: @s.Course / Кредити: @s.Credits
         </h3>
         <h3>
             Задължителен: @{
-                              if (true)
-                              {
-                                  <span>Да</span>
-                              }
-                              else
-                              {
-                                  <span>Не</span>
-                              }
-                          }
+                if (s.IsMandatory)
+                {
+                    <span>Да</span>
+                }
+                else
+                {
+                    <span>Не</span>
+                }
+            }
         </h3>
         @using (Html.BeginForm("Details", "Subject", new { Id = s.Id }, FormMethod.Get))
-        {
-            <input class="btn btn-success" type="submit" value="Виж повече" />
+            {
+                <input class="btn btn-success" type="submit" value="Виж повече" />
+            }
+
+        @{if (Request.IsAuthenticated)
+                {
+                <div class="row">
+                    <div class="col-md-6 text-right mt-20">
+                        @using (Html.BeginForm("Delete", "Subject", new { Id = s.Id }, FormMethod.Post))
+                        {
+                            <input class="btn btn-danger" type="submit" value="Изтриване" />
+                        }
+                    </div>
+                    <div class="col-md-6 text-left mt-20">
+                        @using (Html.BeginForm("Update", "Subject", new { Id = s.Id }, FormMethod.Get))
+                        {
+                            <input class="btn btn-success" type="submit" value="Редактирай" />
+                        }
+                    </div>
+                </div>
+            }
         }
     </div>
 
-}
+            }

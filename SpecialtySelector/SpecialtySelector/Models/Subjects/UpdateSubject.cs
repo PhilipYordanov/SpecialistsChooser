@@ -1,11 +1,14 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using SpecialtySelector.Data;
 
 namespace SpecialtySelector.Models.Subjects
 {
-    public class CreateSubject
+    public class UpdateSubject
     {
+        public int Id { get; set; }
+
         [Required(ErrorMessage = "Името трябва да бъде между 1-1000 символа !!!")]
         [Display(Name = "Име на предмет:")]
         public string Name { get; set; }
@@ -26,6 +29,8 @@ namespace SpecialtySelector.Models.Subjects
         [Display(Name = "Кратко описание на предмета:")]
         public string Description { get; set; }
 
+        public DateTime? DeletedOn { get; set; }
+
         public List<int> Specialty { get; set; }
 
         public ICollection<Specialty> Specialties { get; set; }
@@ -33,5 +38,7 @@ namespace SpecialtySelector.Models.Subjects
         public List<int> Teacher { get; set; }
 
         public ICollection<Teacher> Teachers { get; set; }
+
+        public string AdminId { get; set; }
     }
 }

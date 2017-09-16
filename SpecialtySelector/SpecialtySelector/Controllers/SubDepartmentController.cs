@@ -48,6 +48,7 @@ namespace SpecialtySelector.Controllers
                     return RedirectToAction("Details", new { id = subDepartment.Id });
                 }
             }
+
             using (var db = new SpecialtySelectorDbContext())
             {
                 var departments = db.Departments.ToList();
@@ -56,11 +57,15 @@ namespace SpecialtySelector.Controllers
 
                 return View(subDepartmentModel);
             }
-
         }
 
-        public ActionResult Details(int id)
+        public ActionResult Details(int? id)
         {
+            if (id == null)
+            {
+                return HttpNotFound();
+            }
+
             using (var db = new SpecialtySelectorDbContext())
             {
                 var subDepartment = db.SubDepartments
@@ -73,16 +78,23 @@ namespace SpecialtySelector.Controllers
                         Description = d.Description
                     })
                     .FirstOrDefault();
+
                 if (subDepartment == null)
                 {
                     return HttpNotFound();
                 }
+
                 return View(subDepartment);
             }
         }
 
-        public ActionResult SubDepartmentInfo(int id)
+        public ActionResult SubDepartmentInfo(int? id)
         {
+            if (id == null)
+            {
+                return HttpNotFound();
+            }
+
             using (var db = new SpecialtySelectorDbContext())
             {
                 var subDepartments = db.SubDepartments
@@ -96,13 +108,23 @@ namespace SpecialtySelector.Controllers
                     })
                     .ToList();
 
+                if (subDepartments == null)
+                {
+                    return HttpNotFound();
+                }
+
                 return View(subDepartments);
             }
         }
 
         [Authorize]
-        public ActionResult Delete(int id)
+        public ActionResult Delete(int? id)
         {
+            if (id == null)
+            {
+                return HttpNotFound();
+            }
+
             using (var db = new SpecialtySelectorDbContext())
             {
                 SubDepartment subDepartment = db.SubDepartments.FirstOrDefault(x => x.Id == id);
@@ -120,12 +142,22 @@ namespace SpecialtySelector.Controllers
 
         [Authorize]
         [HttpGet]
-        public ActionResult Update(int id)
+        public ActionResult Update(int? id)
         {
+            if (id == null)
+            {
+                return HttpNotFound();
+            }
+
             using (var db = new SpecialtySelectorDbContext())
             {
                 var subDepartment = db.SubDepartments
                     .Find(id);
+
+                if (subDepartment == null)
+                {
+                    return HttpNotFound();
+                }
 
                 var subDepartmentViewModel = new UpdateSubDepartment
                 {
@@ -180,6 +212,11 @@ namespace SpecialtySelector.Controllers
                         DepatrmentName = sp.Department.Name
                     })
                     .ToList();
+
+                if (subDepartments == null)
+                {
+                    return HttpNotFound();
+                }
 
                 return View(subDepartments);
             }

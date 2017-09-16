@@ -6,7 +6,7 @@
 @foreach (var s in Model)
 {
 
-    <div class="jumbotron col-md-5 col-md-offset-1 text-center mt-30">
+    <div class="jumbotron col-md-5 col-xs-offset-1 text-center mt-30 " >
         <h2 class="lead text-info">
             Име на поднаправлението: @s.SubDepartmentName
         </h2>
@@ -40,30 +40,37 @@
         <div>
             <div class="lead">@s.Description</div>
         </div>
+        
         @{if (Request.IsAuthenticated)
             {
-
                 <div>
-                    @using (Html.BeginForm("Delete", "Specialty", new { Id = s.Id }, FormMethod.Post))
-                    {
-                        <input class="btn btn-danger" type="submit" value="Изтриване" />
-                    }
-                    @using (Html.BeginForm("Update", "Specialty", new { Id = s.Id }, FormMethod.Get))
-                    {
-                        <input class="btn btn-success" type="submit" value="Редактирай" />
-                    }
                     @using (Html.BeginForm("Details", "Specialty", new { Id = s.Id }, FormMethod.Get))
                     {
-                        <input class="btn btn-success" type="submit" value="Виж повече" />
+                        <input class="btn btn-info" type="submit" value="Виж повече" />
                     }
+                </div>
+                <div class="row">
+                    <div class="col-md-6 text-right mt-20">
+                        @using (Html.BeginForm("Delete", "Specialty", new { Id = s.Id }, FormMethod.Post))
+                        {
+                            <input class="btn btn-danger" type="submit" value="Изтриване" />
+                        }
+                    </div>
+                    <div class="col-md-6 text-left mt-20">
+                        @using (Html.BeginForm("Update", "Specialty", new { Id = s.Id }, FormMethod.Get))
+                        {
+                            <input class="btn btn-success" type="submit" value="Редактирай" />
+                        }
+                    </div>
+
                 </div>
 
             }
-          else
-          {
-              using (Html.BeginForm("Details", "Specialty", new { Id = s.Id }, FormMethod.Get))
-               {
-                   <input class="btn btn-success" type="submit" value="Виж повече" />
+            else
+            {
+                using (Html.BeginForm("Details", "Specialty", new { Id = s.Id }, FormMethod.Get))
+                {
+                   <input class="btn btn-info" type="submit" value="Виж повече" />
                }
           }
         }

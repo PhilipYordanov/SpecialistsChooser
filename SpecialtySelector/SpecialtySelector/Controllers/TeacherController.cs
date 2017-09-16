@@ -28,7 +28,7 @@ namespace SpecialtySelector.Controllers
         [HttpPost]
         public ActionResult Create(CreateTeacher createTeacher)
         {
-            if (ModelState.IsValid)
+            if (ModelState.IsValid && createTeacher != null)
             {
                 using (var db = new SpecialtySelectorDbContext())
                 {
@@ -46,7 +46,6 @@ namespace SpecialtySelector.Controllers
 
                     var teacher = new Teacher()
                     {
-
                         FirstName = createTeacher.FirstName,
                         SecondName = createTeacher.SecondName,
                         AdminId = adminId,
@@ -74,8 +73,13 @@ namespace SpecialtySelector.Controllers
             }
         }
 
-        public ActionResult TeacherInfo(int id)
+        public ActionResult TeacherInfo(int? id)
         {
+            if (id == null)
+            {
+                return this.HttpNotFound();
+            }
+
             using (var db = new SpecialtySelectorDbContext())
             {
                 var teachers = db.Teachers
@@ -94,12 +98,22 @@ namespace SpecialtySelector.Controllers
                     })
                     .ToList();
 
+                if (teachers == null)
+                {
+                    return this.HttpNotFound();
+                }
+
                 return View(teachers);
             }
         }
 
-        public ActionResult Details(int id)
+        public ActionResult Details(int? id)
         {
+            if (id == null)
+            {
+                return this.HttpNotFound();
+            }
+
             using (var db = new SpecialtySelectorDbContext())
             {
                 var teachers = db.Teachers.
@@ -128,8 +142,13 @@ namespace SpecialtySelector.Controllers
         }
 
         [Authorize]
-        public ActionResult Delete(int id)
+        public ActionResult Delete(int? id)
         {
+            if (id == null)
+            {
+                return this.HttpNotFound();
+            }
+
             using (var db = new SpecialtySelectorDbContext())
             {
                 var teacher = db.Teachers.Find(id);
@@ -145,12 +164,22 @@ namespace SpecialtySelector.Controllers
 
         [Authorize]
         [HttpGet]
-        public ActionResult Update(int id)
+        public ActionResult Update(int? id)
         {
+            if (id == null)
+            {
+                return this.HttpNotFound();
+            }
+
             using (var db = new SpecialtySelectorDbContext())
             {
                 var teacher = db.Teachers.Find(id);
                 var adminId = this.User.Identity.GetUserId();
+
+                if (teacher == null)
+                {
+                    return this.HttpNotFound();
+                }
 
                 var teacherViewModel = new UpdateTeacher
                 {
@@ -228,6 +257,11 @@ namespace SpecialtySelector.Controllers
                         Subjects = t.Subjects
                     })
                     .ToList();
+
+                if (teachers == null)
+                {
+                    return this.HttpNotFound();
+                }
 
                 return View(teachers);
             }

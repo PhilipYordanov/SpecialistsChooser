@@ -63,11 +63,16 @@ namespace SpecialtySelector.Controllers
 
         }
 
-        public ActionResult SpecialtyInfo(int id)
+        public ActionResult SpecialtyInfo(int? id)
         {
+            if (id == null)
+            {
+                return HttpNotFound();
+            }
+
             using (var db = new SpecialtySelectorDbContext())
             {
-                var subDepartments = db.Specialties
+                var specialties = db.Specialties
                     .Where(sb => sb.SubDepartmentId == id)
                     .Where(sb => sb.DeletedOn.Equals(null))
                     .Select(sb => new SpecialtyInfo()
@@ -81,12 +86,22 @@ namespace SpecialtySelector.Controllers
                     })
                     .ToList();
 
-                return View(subDepartments);
+                if (specialties == null)
+                {
+                    return HttpNotFound();
+                }
+
+                return View(specialties);
             }
         }
 
-        public ActionResult Details(int id)
+        public ActionResult Details(int? id)
         {
+            if (id == null)
+            {
+                return HttpNotFound();
+            }
+
             using (var db = new SpecialtySelectorDbContext())
             {
                 var specialties = db.Specialties
@@ -131,13 +146,23 @@ namespace SpecialtySelector.Controllers
                     })
                     .ToList();
 
+                if (specialties == null)
+                {
+                    return HttpNotFound();
+                }
+
                 return View(specialties);
             }
         }
 
         [Authorize]
-        public ActionResult Delete(int id)
+        public ActionResult Delete(int? id)
         {
+            if (id == null)
+            {
+                return HttpNotFound();
+            }
+
             using (var db = new SpecialtySelectorDbContext())
             {
                 Specialty specialty = db.Specialties.FirstOrDefault(s => s.Id == id);
@@ -155,11 +180,21 @@ namespace SpecialtySelector.Controllers
 
         [Authorize]
         [HttpGet]
-        public ActionResult Update(int id)
+        public ActionResult Update(int? id)
         {
+            if (id == null)
+            {
+                return HttpNotFound();
+            }
+
             using (var db = new SpecialtySelectorDbContext())
             {
                 var specialty = db.Specialties.Find(id);
+
+                if (specialty == null)
+                {
+                    return HttpNotFound();
+                }
 
                 var specialtyViewModel = new UpdateSpecialty
                 {

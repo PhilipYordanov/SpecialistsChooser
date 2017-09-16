@@ -43,8 +43,13 @@ namespace SpecialtySelector.Controllers
             return View(departmentModel);
         }
 
-        public ActionResult Details(int id)
+        public ActionResult Details(int? id)
         {
+            if (id == null)
+            {
+                return HttpNotFound();
+            }
+
             using (var db = new SpecialtySelectorDbContext())
             {
                 var department = db.Departments
@@ -57,13 +62,23 @@ namespace SpecialtySelector.Controllers
                     })
                     .FirstOrDefault();
 
+                if (department == null)
+                {
+                    return HttpNotFound();
+                }
+
                 return View(department);
             }
         }
 
         [Authorize]
-        public ActionResult Delete(int id)
+        public ActionResult Delete(int? id)
         {
+            if (id == null)
+            {
+                return HttpNotFound();
+            }
+
             using (var db = new SpecialtySelectorDbContext())
             {
                 Department department = db.Departments.FirstOrDefault(x => x.Id == id);
@@ -81,12 +96,22 @@ namespace SpecialtySelector.Controllers
 
         [Authorize]
         [HttpGet]
-        public ActionResult Update(int id)
+        public ActionResult Update(int? id)
         {
+            if (id == null)
+            {
+                return HttpNotFound();
+            }
+
             using (var db = new SpecialtySelectorDbContext())
             {
                 var department = db.Departments
                     .Find(id);
+
+                if (department == null)
+                {
+                    return HttpNotFound();
+                }
 
                 var departmentViewModel = new UpdateDepartment
                 {
@@ -110,7 +135,7 @@ namespace SpecialtySelector.Controllers
                 {
                     var department = db.Departments
                         .Find(updateDepartment.Id);
-                    
+
                     department.Name = updateDepartment.Name;
                     department.Description = updateDepartment.Description;
                     department.DeletedOn = updateDepartment.DeletedOn;
@@ -118,7 +143,7 @@ namespace SpecialtySelector.Controllers
 
                 }
 
-                return RedirectToAction("Details", new {id = updateDepartment.Id});
+                return RedirectToAction("Details", new { id = updateDepartment.Id });
             }
 
             return View(updateDepartment);

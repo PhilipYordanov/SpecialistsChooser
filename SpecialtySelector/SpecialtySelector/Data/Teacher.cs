@@ -21,7 +21,9 @@ namespace SpecialtySelector.Data
         }
 
         public int Id { get; set; }
+
         public Degree Degree { get; set; }
+
         public AcademicTitle AcademicTitle { get; set; }
 
         [Required]

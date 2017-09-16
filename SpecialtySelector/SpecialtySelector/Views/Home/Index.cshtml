@@ -34,16 +34,18 @@
                         @if (Request.IsAuthenticated)
                         {
                             <div class="row">
-
-                                @using (Html.BeginForm("Delete", "Department", new { Id = firstDepartmentId }, FormMethod.Post))
-                                {
-                                    <input class="btn btn-danger" type="submit" value="Изтриване" />
-                                }
-                                @using (Html.BeginForm("Update", "Department", new { Id = firstDepartmentId }, FormMethod.Get))
-                                {
-                                    <input class="btn btn-success" type="submit" value="Редактирай" />
-                                }
-
+                                <div class="col-md-6 text-right mt-20">
+                                    @using (Html.BeginForm("Delete", "Department", new { Id = firstDepartmentId }, FormMethod.Post))
+                                    {
+                                        <input class="btn btn-danger" type="submit" value="Изтриване" />
+                                    }
+                                </div>
+                                <div class="col-md-6 text-left mt-20">
+                                    @using (Html.BeginForm("Update", "Department", new { Id = firstDepartmentId }, FormMethod.Get))
+                                    {
+                                        <input class="btn btn-success" type="submit" value="Редактирай" />
+                                    }
+                                </div>
                             </div>
                         }
                     </div>
@@ -65,16 +67,18 @@
                             @if (Request.IsAuthenticated)
                             {
                                 <div class="row">
-
-                                    @using (Html.BeginForm("Delete", "Department", new { Id = x.Id }, FormMethod.Post))
-                                    {
-                                        <input class="btn btn-danger" type="submit" value="Изтриване" />
-                                    }
-                                    @using (Html.BeginForm("Update", "Department", new { Id = x.Id }, FormMethod.Get))
-                                    {
-                                        <input class="btn btn-success" type="submit" value="Редактирай" />
-                                    }
-
+                                    <div class="col-md-6 text-right mt-20">
+                                        @using (Html.BeginForm("Delete", "Department", new { Id = firstDepartmentId }, FormMethod.Post))
+                                        {
+                                            <input class="btn btn-danger" type="submit" value="Изтриване" />
+                                        }
+                                    </div>
+                                    <div class="col-md-6 text-left mt-20">
+                                        @using (Html.BeginForm("Update", "Department", new { Id = firstDepartmentId }, FormMethod.Get))
+                                        {
+                                            <input class="btn btn-success" type="submit" value="Редактирай" />
+                                        }
+                                    </div>
                                 </div>
                             }
                         </div>
