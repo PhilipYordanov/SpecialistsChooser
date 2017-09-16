@@ -68,13 +68,13 @@
                             {
                                 <div class="row">
                                     <div class="col-md-6 text-right mt-20">
-                                        @using (Html.BeginForm("Delete", "Department", new { Id = firstDepartmentId }, FormMethod.Post))
+                                        @using (Html.BeginForm("Delete", "Department", new { Id = x.Id }, FormMethod.Post))
                                         {
                                             <input class="btn btn-danger" type="submit" value="Изтриване" />
                                         }
                                     </div>
                                     <div class="col-md-6 text-left mt-20">
-                                        @using (Html.BeginForm("Update", "Department", new { Id = firstDepartmentId }, FormMethod.Get))
+                                        @using (Html.BeginForm("Update", "Department", new { Id = x.Id }, FormMethod.Get))
                                         {
                                             <input class="btn btn-success" type="submit" value="Редактирай" />
                                         }
